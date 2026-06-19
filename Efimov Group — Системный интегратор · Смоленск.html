@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Efimov Group — Системный интегратор · Смоленск</title>
+  <meta name="description" content="Автоматизируем продажи, внедряем amoCRM, выстраиваем отделы продаж и берём на себя операционные задачи вашего бизнеса под ключ в Смоленске с гарантией по договору.">
+  <meta name="keywords" content="Efimov Group, Efimov Tech, Efimov Consult, Efimov Urban, внедрение CRM, amoCRM Смоленск, аудит продаж, РОП в аренду, снабжение под ключ">
+  
+  <!-- SEO Open Graph -->
+  <meta property="og:title" content="Efimov Group — Системный интегратор · Смоленск">
+  <meta property="og:description" content="Автоматизируем продажи, внедряем amoCRM, выстраиваем отделы продаж и берём на себя операционные задачи вашего бизнеса под ключ.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://efimov-group.ru">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- Schema.org Microdata -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Efimov Group",
+    "url": "https://efimov-group.ru",
+    "logo": "https://efimov-group.ru/images/logo.png",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+7-999-123-4567",
+      "contactType": "sales",
+      "areaServed": "RU",
+      "availableLanguage": "Russian"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Смоленск",
+      "addressCountry": "RU"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- LAYER 0: Trust Bar -->
+  <div class="trust-bar">
+    <div class="container trust-bar-content">
+      <div class="trust-bar-left">
+        <span><span class="trust-indicator"></span>Официальный партнёр amoCRM</span>
+        <span>·</span>
+        <span>г. Смоленск</span>
+        <span>·</span>
+        <span>Работаем с 2021 г.</span>
+        <span>·</span>
+        <span>80+ клиентов</span>
+      </div>
+      <div class="trust-bar-right">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        <span>Ответим в течение 30 минут</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- LAYER 1: Header -->
+  <header class="header">
+    <div class="container header-content">
+      <a href="#" class="logo">
+        <span class="logo-main">Efimov Group</span>
+        <span class="logo-sub">Смоленск</span>
+      </a>
+      
+      <ul class="nav-menu">
+        <li><a href="#departments" class="nav-link tech" onclick="selectQuizDept('tech')">Efimov Tech</a></li>
+        <li><a href="#departments" class="nav-link consult" onclick="selectQuizDept('consult')">Efimov Consult</a></li>
+        <li><a href="#departments" class="nav-link urban" onclick="selectQuizDept('urban')">Efimov Urban</a></li>
+        <li><a href="#cases" class="nav-link">Кейсы</a></li>
+        <li><a href="#team" class="nav-link">Команда</a></li>
+      </ul>
+
+      <div class="header-actions">
+        <a href="tel:+79991234567" class="header-phone">+7 (999) 123-45-67</a>
+        <a href="#quiz" class="btn btn-primary" data-trigger-quiz="tech">Оставить заявку</a>
+        <button class="hamburger" aria-label="Открыть меню">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation overlay -->
+  <div class="mobile-nav">
+    <ul class="mobile-menu">
+      <li><a href="#departments" class="mobile-link" onclick="selectQuizDept('tech')">Efimov Tech (amoCRM)</a></li>
+      <li><a href="#departments" class="mobile-link" onclick="selectQuizDept('consult')">Efimov Consult (Аудит и РОП)</a></li>
+      <li><a href="#departments" class="mobile-link" onclick="selectQuizDept('urban')">Efimov Urban (Задачи под ключ)</a></li>
+      <li><a href="#cases" class="mobile-link">Кейсы</a></li>
+      <li><a href="#team" class="mobile-link">Команда</a></li>
+    </ul>
+    <div style="margin-top: auto; display: flex; flex-direction: column; gap: 16px;">
+      <a href="tel:+79991234567" class="header-phone" style="font-size: 20px; color: #FFFFFF;">+7 (999) 123-45-67</a>
+      <a href="#quiz" class="btn btn-primary text-center" style="width: 100%;" data-trigger-quiz="tech">Оставить заявку</a>
+    </div>
+  </div>
+
+  <!-- HERO SECTION (Dark Theme) -->
+  <section class="hero">
+    <div class="hero-glow-1"></div>
+    <div class="hero-glow-2"></div>
+    <div class="container hero-content reveal">
+      <div class="eyebrow">
+        <span class="eyebrow-dot"></span>
+        <span>Системный интегратор · 3 направления · 1 партнёр</span>
+      </div>
+      <h1 class="hero-title">
+        Ваш бизнес растёт,
+        <span>когда процессы работают без вас</span>
+      </h1>
+      <p class="hero-subtitle">
+        Автоматизируем продажи, выстраиваем отдел и берём задачи, которые съедают ваше время. Три департамента — одна точка входа.
+      </p>
+      
+      <div class="hero-ctas">
+        <a href="#quiz" class="btn btn-primary" data-trigger-quiz="tech">Подобрать решение &rarr;</a>
+        <a href="#cases" class="btn btn-dark-secondary">Посмотреть кейсы</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num stat-num-anim" data-target="80" data-suffix="+">0+</div>
+          <div class="stat-desc">активных клиентов</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num stat-num-anim" data-target="140" data-suffix="+">0+</div>
+          <div class="stat-desc">реализованных проектов</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num stat-num-anim" data-target="5" data-suffix=" лет">0 лет</div>
+          <div class="stat-desc">опыта на рынке</div>
+        </div>
+        <div class="stat-item" style="border-right: none;">
+          <div class="stat-num stat-num-anim" data-target="94" data-suffix="%">0%</div>
+          <div class="stat-desc">повторных обращений</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPARTMENT QUICK RIBBON -->
+  <div class="dept-ribbon">
+    <div class="container">
+      <div class="dept-ribbon-content">
+        <a href="#tech-dept" class="dept-ribbon-item tech">
+          <span class="dept-ribbon-dot"></span>
+          <span>Efimov Tech</span>
+          <span class="partner-badge">amoCRM Partner</span>
+        </a>
+        <a href="#consult-dept" class="dept-ribbon-item consult">
+          <span class="dept-ribbon-dot"></span>
+          <span>Efimov Consult</span>
+        </a>
+        <a href="#urban-dept" class="dept-ribbon-item urban">
+          <span class="dept-ribbon-dot"></span>
+          <span>Efimov Urban</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: Pain Grid "Узнайте себя" -->
+  <section class="pains-sec" id="pains">
+    <div class="container reveal">
+      <div class="section-header text-center">
+        <span class="section-label">Идентификация боли</span>
+        <h2 class="section-title">Одно из этого точно ваше</h2>
+      </div>
+
+      <div class="pain-grid">
+        <!-- Card 1 -->
+        <div class="pain-card tech" onclick="selectQuizDept('tech')">
+          <div class="pain-card-content">
+            Менеджеры работают по наитию — нет ни воронки продаж, ни прописанных скриптов
+          </div>
+          <div class="pain-card-footer">
+            <span class="pain-card-link">Подробнее <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+            <span class="pain-tag">Tech</span>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="pain-card tech" onclick="selectQuizDept('tech')">
+          <div class="pain-card-content">
+            CRM установлена для галочки, но менеджеры не вносят данные и саботируют систему
+          </div>
+          <div class="pain-card-footer">
+            <span class="pain-card-link">Подробнее <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+            <span class="pain-tag">Tech</span>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="pain-card consult" onclick="selectQuizDept('consult')">
+          <div class="pain-card-content">
+            Продажи идут хаотично, нет предсказуемости — план то перевыполняется, то проваливается
+          </div>
+          <div class="pain-card-footer">
+            <span class="pain-card-link">Подробнее <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+            <span class="pain-tag">Consult</span>
+          </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="pain-card consult" onclick="selectQuizDept('consult')">
+          <div class="pain-card-content">
+            Нужен сильный РОП для управления, но нанимать в штат дорого и рискованно
+          </div>
+          <div class="pain-card-footer">
+            <span class="pain-card-link">Подробнее <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+            <span class="pain-tag">Consult</span>
+          </div>
+        </div>
+        <!-- Card 5 -->
+        <div class="pain-card urban" onclick="selectQuizDept('urban')">
+          <div class="pain-card-content">
+            Подрядчики постоянно подводят по срокам и качеству — нужен тот, кто возьмет ответственность
+          </div>
+          <div class="pain-card-footer">
+            <span class="pain-card-link">Подробнее <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+            <span class="pain-tag">Urban</span>
+          </div>
+        </div>
+        <!-- Card 6 -->
+        <div class="pain-card urban" onclick="selectQuizDept('urban')">
+          <div class="pain-card-content">
+            Некогда заниматься операционными и бытовыми задачами, которые отвлекают от главного
+          </div>
+          <div class="pain-card-footer">
+            <span class="pain-card-link">Подробнее <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+            <span class="pain-tag">Urban</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pain-cta-bar">
+        <span>Нашли себя? Мы уже знаем, что вам предложить &rarr; </span>
+        <a href="#quiz" data-trigger-quiz="tech">Подобрать решение</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: Three Departments Showcase -->
+  <section class="depts-showcase" id="departments">
+    <div class="container reveal">
+      <div class="section-header text-center">
+        <span class="section-label">Департаменты группы</span>
+        <h2 class="section-title">Три направления — одна точка входа</h2>
+      </div>
+
+      <div class="dept-cards-stack">
+        <!-- Efimov Tech -->
+        <div class="dept-showcase-card tech-card" id="tech-dept">
+          <div class="dept-left">
+            <div class="dept-title-area">
+              <div class="dept-icon-box">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+              </div>
+              <h3 class="dept-name">Efimov Tech</h3>
+            </div>
+            <p class="dept-lead">Автоматизация продаж и CRM-системы</p>
+            
+            <div>
+              <div class="dept-list-title">Что решает:</div>
+              <ul class="dept-list">
+                <li class="dept-list-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                  <span>Хаос в учете клиентов и потеря входящих заявок</span>
+                </li>
+                <li class="dept-list-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                  <span>Отсутствие контроля работы менеджеров и прозрачной отчетности</span>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <div class="dept-list-title">Что вы получите:</div>
+              <ul class="dept-list">
+                <li class="dept-list-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Настроенную amoCRM под логику вашей воронки продаж</span>
+                </li>
+                <li class="dept-list-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Автоматические задачи, интеграцию сайта, почты и мессенджеров</span>
+                </li>
+                <li class="dept-list-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Обучение команды с записью видеоинструкций</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="dept-right">
+            <div class="dept-guarantee-box">
+              <div class="dept-guarantee-title">Гарантия</div>
+              <div class="dept-guarantee-value">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                <span>Договор + KPI + Сроки</span>
+              </div>
+            </div>
+            <div style="margin-bottom: 32px; display: flex; align-items: center; gap: 12px;">
+              <span class="partner-badge" style="padding: 6px 12px; font-size: 11px;">Official amoCRM Partner</span>
+            </div>
+            <a href="#quiz" class="btn btn-primary dept-action-btn" onclick="selectQuizDept('tech')">Рассчитать стоимость &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Efimov Consult -->
+        <div class="dept-showcase-card consult-card" id="consult-dept">
+          <div class="dept-left">
+            <div class="dept-title-area">
+              <div class="dept-icon-box">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              </div>
+              <h3 class="dept-name">Efimov Consult</h3>
+            </div>
+            <p class="dept-lead">Аудит продаж и внешнее управление</p>
+            
+            <div>
+              <div class="dept-list-title">Что решает:</div>
+              <ul class="dept-list">
+                <li class="dept-list-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                  <span>Падение конверсии на разных этапах воронки</span>
+                </li>
+                <li class="dept-list-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                  <span>Слабая дисциплина в отделе продаж, отсутствие регламентов и контроля</span>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <div class="dept-list-title">Что вы получите:</div>
+              <ul class="dept-list">
+                <li class="dept-list-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Полный аудит звонков, переписок и процессов</span>
+                </li>
+                <li class="dept-list-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Прописанную книгу продаж, скрипты и должностные инструкции</span>
+                </li>
+                <li class="dept-list-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Услугу «РОП в аренду» — операционное руководство вашим отделом продаж</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="dept-right">
+            <div class="dept-guarantee-box">
+              <div class="dept-guarantee-title">Гарантия</div>
+              <div class="dept-guarantee-value">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                <span>Фиксация KPI роста выручки в договоре</span>
+              </div>
+            </div>
+            <p style="font-size: 13px; color: var(--text-dark-secondary); margin-bottom: 32px; line-height: 1.5;">
+              Направляем опытных практиков. Никакой голой теории — строим рабочую систему продаж.
+            </p>
+            <a href="#quiz" class="btn btn-primary dept-action-btn" onclick="selectQuizDept('consult')">Заказать аудит &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Efimov Urban -->
+        <div class="dept-showcase-card urban-card" id="urban-dept">
+          <div class="dept-left">
+            <div class="dept-title-area">
+              <div class="dept-icon-box">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+              </div>
+              <h3 class="dept-name">Efimov Urban</h3>
+            </div>
+            <p class="dept-lead">Оператор нестандартных городских задач</p>
+            
+            <div>
+              <div class="dept-list-title">Для тех, кому некогда контролировать рутину:</div>
+              <ul class="dept-list">
+                <li class="dept-list-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Нахождение, наем и жесткий контроль строительных и ремонтных бригад</span>
+                </li>
+                <li class="dept-list-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Комплексная организация переезда офиса или загородного дома под ключ</span>
+                </li>
+                <li class="dept-list-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Оперативное снабжение объектов материалами по оптовым ценам</span>
+                </li>
+                <li class="dept-list-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Любое поручение в Смоленске, требующее вашего личного времени</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="dept-right">
+            <div class="dept-guarantee-box">
+              <div class="dept-guarantee-title">Условия работы</div>
+              <div class="dept-guarantee-value" style="color: var(--accent-urban);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Без предоплаты при первом обращении</span>
+              </div>
+            </div>
+            <p style="font-size: 13px; color: var(--text-dark-secondary); margin-bottom: 32px; line-height: 1.5;">
+              Как это работает: Описываете задачу нам в Telegram -> Получаете прозрачную смету -> Принимаете идеальный результат.
+            </p>
+            <a href="#quiz" class="btn btn-primary dept-action-btn" onclick="selectQuizDept('urban')">Описать задачу &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: Process -->
+  <section class="process-sec">
+    <div class="container reveal">
+      <div class="section-header text-center">
+        <span class="section-label">Этапы взаимодействия</span>
+        <h2 class="section-title">От звонка до результата — понятный процесс</h2>
+      </div>
+
+      <div class="process-grid">
+        <!-- Step 1 -->
+        <div class="process-step">
+          <div class="process-num">01</div>
+          <h3 class="process-title">Заявка</h3>
+          <p class="process-desc">Оставляете запрос удобным способом: форма на сайте, мессенджер Telegram или прямой звонок.</p>
+        </div>
+        <!-- Step 2 -->
+        <div class="process-step">
+          <div class="process-num">02</div>
+          <h3 class="process-title">Диагностика</h3>
+          <p class="process-desc">Бесплатно разбираем вашу бизнес- или личную задачу, формируем концепт решения и бюджет.</p>
+          <span class="process-badge">Бесплатно</span>
+        </div>
+        <!-- Step 3 -->
+        <div class="process-step">
+          <div class="process-num">03</div>
+          <h3 class="process-title">Договор с KPI</h3>
+          <p class="process-desc">Фиксируем конкретные сроки реализации, контрольные точки и KPI. Никаких непредвиденных доплат.</p>
+        </div>
+        <!-- Step 4 -->
+        <div class="process-step">
+          <div class="process-num">04</div>
+          <h3 class="process-title">Сдача и поддержка</h3>
+          <p class="process-desc">Передаем готовую работу с полной отчётностью. Обеспечиваем постпроектную поддержку и ведение.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: Social Proof (Cases & Testimonials) -->
+  <section class="social-proof-sec" id="cases">
+    <div class="container reveal">
+      <div class="section-header text-center">
+        <span class="section-label">Результаты в цифрах</span>
+        <h2 class="section-title">Подтверждённые кейсы</h2>
+      </div>
+
+      <!-- Tabs -->
+      <div class="cases-tabs">
+        <button class="tab-btn active" data-tab="all">Все проекты</button>
+        <button class="tab-btn" data-tab="tech">Efimov Tech</button>
+        <button class="tab-btn" data-tab="consult">Efimov Consult</button>
+        <button class="tab-btn" data-tab="urban">Efimov Urban</button>
+      </div>
+
+      <!-- Cases Grid -->
+      <div class="cases-grid">
+        <!-- Case 1: Tech -->
+        <div class="case-card tech-case">
+          <div class="case-header">
+            <span class="case-dept-tag">Tech</span>
+            <span class="case-client">ООО «СмоленскСтрой»</span>
+          </div>
+          <h3 class="case-title">Оцифровка застройщика: amoCRM с нуля</h3>
+          <div class="case-body">
+            <div class="case-label">Проблема</div>
+            <p class="case-text">Заявки терялись, менеджеры забывали звонить клиентам, велся хаотичный учет в блокнотах.</p>
+            
+            <div class="case-label">Результат</div>
+            <div class="case-results">
+              <div class="case-result-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
+                <span>+38% Рост конверсии отдела</span>
+              </div>
+              <div class="case-result-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                <span>-60% Потерянных обращений</span>
+              </div>
+              <div class="case-result-item">
+                <span>⏱ Срок внедрения: 3 недели</span>
+              </div>
+            </div>
+          </div>
+          <a href="#quiz" class="case-footer-link">Хочу такой же результат &rarr;</a>
+        </div>
+
+        <!-- Case 2: Consult -->
+        <div class="case-card consult-case">
+          <div class="case-header">
+            <span class="case-dept-tag">Consult</span>
+            <span class="case-client">Дистрибьютор «АгроТрейд»</span>
+          </div>
+          <h3 class="case-title">Перезапуск отдела продаж и аудит звонков</h3>
+          <div class="case-body">
+            <div class="case-label">Проблема</div>
+            <p class="case-text">Менеджеры игнорировали кросс-продажи, средний чек падал, РОП не справлялся с дисциплиной.</p>
+            
+            <div class="case-label">Результат</div>
+            <div class="case-results">
+              <div class="case-result-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
+                <span>+25% Рост среднего чека</span>
+              </div>
+              <div class="case-result-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
+                <span>+30% Выполнение планов продаж</span>
+              </div>
+              <div class="case-result-item">
+                <span>⏱ РОП в аренду на 2 месяца</span>
+              </div>
+            </div>
+          </div>
+          <a href="#quiz" class="case-footer-link">Хочу такой же результат &rarr;</a>
+        </div>
+
+        <!-- Case 3: Urban -->
+        <div class="case-card urban-case">
+          <div class="case-header">
+            <span class="case-dept-tag">Urban</span>
+            <span class="case-client">Частный инвестор</span>
+          </div>
+          <h3 class="case-title">Снабжение и надзор над строительством</h3>
+          <div class="case-body">
+            <div class="case-label">Проблема</div>
+            <p class="case-text">Инвестор живет в Москве, нужно построить и запустить глэмпинг в Смоленской области под ключ.</p>
+            
+            <div class="case-label">Результат</div>
+            <div class="case-results">
+              <div class="case-result-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                <span>-15% Экономия сметного бюджета</span>
+              </div>
+              <div class="case-result-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>100% Контроль исполнителей без личного участия</span>
+              </div>
+              <div class="case-result-item">
+                <span>⏱ Сдан на 10 дней раньше срока</span>
+              </div>
+            </div>
+          </div>
+          <a href="#quiz" class="case-footer-link">Хочу такой же результат &rarr;</a>
+        </div>
+
+        <!-- Case 4: Tech -->
+        <div class="case-card tech-case">
+          <div class="case-header">
+            <span class="case-dept-tag">Tech</span>
+            <span class="case-client">Сеть клиник «Медикус»</span>
+          </div>
+          <h3 class="case-title">Интеграция CRM с МИС и телефонией</h3>
+          <div class="case-body">
+            <div class="case-label">Проблема</div>
+            <p class="case-text">Медицинская инфосистема не была связана с CRM, администраторы вручную копировали 100+ карточек в день.</p>
+            
+            <div class="case-label">Результат</div>
+            <div class="case-results">
+              <div class="case-result-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                <span>0 мин Ручного переноса данных</span>
+              </div>
+              <div class="case-result-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
+                <span>+15% Повторных записей пациентов</span>
+              </div>
+              <div class="case-result-item">
+                <span>⏱ Реализовано за 4 недели</span>
+              </div>
+            </div>
+          </div>
+          <a href="#quiz" class="case-footer-link">Хочу такой же результат &rarr;</a>
+        </div>
+
+        <!-- Case 5: Consult -->
+        <div class="case-card consult-case">
+          <div class="case-header">
+            <span class="case-dept-tag">Consult</span>
+            <span class="case-client">Производитель мебели</span>
+          </div>
+          <h3 class="case-title">Построение системы KPI и обучение менеджеров</h3>
+          <div class="case-body">
+            <div class="case-label">Проблема</div>
+            <p class="case-text">Менеджеры работали за фикс, не мотивировались продавать дорогие позиции, средний чек стоял на месте.</p>
+            
+            <div class="case-label">Результат</div>
+            <div class="case-results">
+              <div class="case-result-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
+                <span>+42% Рост продаж маржинальных товаров</span>
+              </div>
+              <div class="case-result-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
+                <span>+19% Выручка отдела за 1.5 месяца</span>
+              </div>
+              <div class="case-result-item">
+                <span>⏱ 8 вебинаров-тренингов</span>
+              </div>
+            </div>
+          </div>
+          <a href="#quiz" class="case-footer-link">Хочу такой же результат &rarr;</a>
+        </div>
+
+        <!-- Case 6: Urban -->
+        <div class="case-card urban-case">
+          <div class="case-header">
+            <span class="case-dept-tag">Urban</span>
+            <span class="case-client">Михаил К., предприниматель</span>
+          </div>
+          <h3 class="case-title">Организация и ремонт нового офиса под ключ</h3>
+          <div class="case-body">
+            <div class="case-label">Проблема</div>
+            <p class="case-text">Бизнес расширился, нужно переехать в новое здание. Занятому директору некогда контролировать рабочих.</p>
+            
+            <div class="case-label">Результат</div>
+            <div class="case-results">
+              <div class="case-result-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>0 часов Личного присутствия на стройке</span>
+              </div>
+              <div class="case-result-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                <span>4 дня Срок выполнения работ</span>
+              </div>
+              <div class="case-result-item">
+                <span>⏱ Сдано строго по смете</span>
+              </div>
+            </div>
+          </div>
+          <a href="#quiz" class="case-footer-link">Хочу такой же результат &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Testimonials -->
+      <div class="testimonials-slider">
+        <!-- Testimonial 1 -->
+        <div class="testimonial-card active">
+          <div class="testimonial-quote">
+            «Внедрение amoCRM выполнено за 2 недели. Спустя месяц выручка со старых входящих заявок выросла на 25% — просто потому что теперь ни один лид больше не теряется, а роботы напоминают о сделках.»
+          </div>
+          <div class="testimonial-author">
+            <img src="images/avatar_sokolov.png" alt="Алексей Соколов" class="testimonial-avatar">
+            <div class="testimonial-info">
+              <h4>Алексей Соколов</h4>
+              <p>Директор ООО «СмоленскСтрой» · Клиент Efimov Tech</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="testimonial-card">
+          <div class="testimonial-quote">
+            «Попросил ребят помочь с ремонтом офиса под ключ. Объяснил задачу обычным голосовым сообщением в Telegram — через час уже согласовали прозрачную смету на материалы. Сделали все за 4 дня, никаких доплат!»
+          </div>
+          <div class="testimonial-author">
+            <img src="images/avatar_mikhail.png" alt="Михаил К." class="testimonial-avatar">
+            <div class="testimonial-info">
+              <h4>Михаил К.</h4>
+              <p>Основатель IT-студии · Клиент Efimov Urban</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="slider-controls">
+          <button class="slider-btn prev" aria-label="Предыдущий отзыв">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          </button>
+          
+          <div class="slider-dots">
+            <span class="slider-dot active"></span>
+            <span class="slider-dot"></span>
+          </div>
+
+          <button class="slider-btn next" aria-label="Следующий отзыв">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: Exclusivity & Comparison -->
+  <section class="exclusivity-sec">
+    <div class="container reveal">
+      <div class="section-header text-center">
+        <span class="section-label">Почему мы</span>
+        <h2 class="section-title">Партнерские отношения вместо разовых подрядов</h2>
+      </div>
+
+      <div class="compare-grid">
+        <!-- Comparison Table -->
+        <div class="compare-table-wrapper">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Условия</th>
+                <th>Обычный подрядчик</th>
+                <th>Efimov Group</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Договор с KPI</td>
+                <td>Редко (работают по часам)</td>
+                <td>Всегда (фиксация результатов)</td>
+              </tr>
+              <tr>
+                <td>Единый ответственный</td>
+                <td>Нет (перекладывают вину)</td>
+                <td>Да (один менеджер на все задачи)</td>
+              </tr>
+              <tr>
+                <td>Широта компетенций</td>
+                <td>Узкая специализация</td>
+                <td>Tech + Consult + Urban</td>
+              </tr>
+              <tr>
+                <td>Постпроектная поддержка</td>
+                <td>Нет (сдали и забыли)</td>
+                <td>Да (сопровождение от 1 месяца)</td>
+              </tr>
+              <tr>
+                <td>Автоматическая отчетность</td>
+                <td>По запросу (в конце месяца)</td>
+                <td>Автоматически в CRM и ЛК</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Exclusivity Urgency Card -->
+        <div class="exclusivity-card">
+          <h3 class="exclusivity-title">Лимитированный набор</h3>
+          <p class="exclusivity-desc">
+            Мы берем не более 8 новых крупных проектов в месяц, чтобы гарантировать максимальное вовлечение ведущих экспертов и контроль качества.
+          </p>
+          <div class="counter-box">
+            <div class="counter-label">Свободных мест в этом месяце</div>
+            <div class="counter-number">
+              <span class="spots-count">3</span>
+              <span class="counter-pulse"></span>
+            </div>
+          </div>
+          <a href="#quiz" class="btn btn-primary" style="width: 100%; border: 1px solid rgba(255,255,255,0.15);" data-trigger-quiz="tech">Занять свободный слот &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7: Interactive Quiz -->
+  <section class="quiz-sec" id="quiz">
+    <div class="container reveal">
+      <div class="section-header text-center" style="max-width: 700px;">
+        <span class="section-label" style="color: var(--accent-tech);">Лид-опросник</span>
+        <h2 class="section-title" style="color: #FFFFFF;">Подберите оптимальное решение за 2 минуты</h2>
+        <p style="color: var(--text-light-secondary); font-size: 15px; margin-top: -8px;">Ответьте на 3 простых вопроса, и мы подготовим смету с бюджетом под вашу специфику</p>
+      </div>
+
+      <div class="quiz-container">
+        <!-- Dynamic steps container -->
+        <div id="quiz-inner-container">
+          <div class="quiz-progress-wrapper">
+            <div class="quiz-progress-text">
+              <span class="quiz-progress-step">Шаг 1 из 3</span>
+              <span>Экспресс-диагностика</span>
+            </div>
+            <div class="quiz-progress-bar">
+              <div class="quiz-progress-fill"></div>
+            </div>
+          </div>
+
+          <form id="efimov-quiz-form" onsubmit="return false;">
+            <!-- STEP 1: Dept Choice -->
+            <div class="quiz-step active" data-step="0">
+              <h3 class="quiz-question">Какая задача является приоритетной для вашего бизнеса или лично для вас?</h3>
+              <div class="quiz-options">
+                <div class="quiz-option" data-dept="tech">
+                  <div class="quiz-radio"></div>
+                  <div class="quiz-option-text">Внедрить CRM, оцифровать и автоматизировать отдел продаж (Efimov Tech)</div>
+                </div>
+                <div class="quiz-option" data-dept="consult">
+                  <div class="quiz-radio"></div>
+                  <div class="quiz-option-text">Провести аудит отдела продаж, разработать регламенты, нанять РОПа (Efimov Consult)</div>
+                </div>
+                <div class="quiz-option" data-dept="urban">
+                  <div class="quiz-radio"></div>
+                  <div class="quiz-option-text">Делегировать операционные, снабженческие или строительные задачи (Efimov Urban)</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- STEP 2: Adaptive Question (Generated via JS) -->
+            <div class="quiz-step" data-step="1">
+              <h3 class="quiz-question" id="quiz-step2-question">Уточняющий вопрос</h3>
+              <div class="quiz-options" id="quiz-step2-options">
+                <!-- Dynamically generated options will be appended here -->
+              </div>
+            </div>
+
+            <!-- STEP 3: Contact Form -->
+            <div class="quiz-step" data-step="2">
+              <h3 class="quiz-question">Куда направить готовые расчеты и смету проекта?</h3>
+              
+              <div class="quiz-inputs">
+                <div class="quiz-field">
+                  <label for="quiz-name">Ваше имя</label>
+                  <input type="text" id="quiz-name" class="quiz-input" placeholder="Иван Ефимов" required>
+                </div>
+                <div class="quiz-field">
+                  <label for="quiz-phone">Номер телефона</label>
+                  <input type="tel" id="quiz-phone" class="quiz-input" placeholder="+7 (999) 123-45-67" required>
+                </div>
+                
+                <div class="quiz-field">
+                  <label>Предпочтительный способ связи</label>
+                  <div class="quiz-contact-methods">
+                    <button type="button" class="quiz-method-btn selected" data-method="Telegram">Telegram</button>
+                    <button type="button" class="quiz-method-btn" data-method="WhatsApp">WhatsApp</button>
+                    <button type="button" class="quiz-method-btn" data-method="Звонок">Позвонить мне</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quiz Navigation -->
+            <div class="quiz-navigation">
+              <button type="button" class="btn btn-dark-secondary quiz-nav-btn" id="quiz-prev-btn" style="visibility: hidden;">&larr; Назад</button>
+              <button type="button" class="btn btn-primary quiz-nav-btn" id="quiz-next-btn" disabled>Далее &rarr;</button>
+            </div>
+          </form>
+
+          <div class="quiz-security-info">
+            <span>🔒 Ваши данные в безопасности и не будут переданы третьим лицам.</span>
+            <span>Консультация бесплатна и не обязывает вас к покупке.</span>
+          </div>
+
+          <div class="quiz-tg-alternative">
+            Или напишите нам напрямую: <a href="https://t.me/efimov_group_bot" target="_blank">t.me/efimov_group_bot &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Success Screen -->
+        <div class="quiz-success">
+          <div class="success-icon-box">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          </div>
+          <h3 class="success-title">Спасибо за ответы!</h3>
+          <p class="success-desc">
+            Ваша заявка зарегистрирована в amoCRM. Эксперт по вашему направлению свяжется с вами в течение 30 минут для бесплатной диагностики.
+          </p>
+          <a href="#" class="btn btn-primary" onclick="location.reload(); return false;">Вернуться на главную</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 8: Team -->
+  <section class="team-sec" id="team">
+    <div class="container reveal">
+      <div class="section-header text-center">
+        <span class="section-label">Команда Efimov Group</span>
+        <h2 class="section-title">Люди, которые отвечают за результат</h2>
+      </div>
+
+      <div class="team-grid">
+        <!-- Member 1 -->
+        <div class="team-card">
+          <div class="team-img-wrapper">
+            <img src="images/team_alexey.png" alt="Алексей Ефимов" class="team-img">
+          </div>
+          <div class="team-info">
+            <span class="team-role">Основатель · Руководитель Consult</span>
+            <h3 class="team-name">Алексей Ефимов</h3>
+            <div class="team-fact">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>10+ лет опыта в консалтинге и построении отделов продаж</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Member 2 -->
+        <div class="team-card">
+          <div class="team-img-wrapper">
+            <img src="images/team_dmitry.png" alt="Дмитрий Волков" class="team-img">
+          </div>
+          <div class="team-info">
+            <span class="team-role">Руководитель Efimov Tech</span>
+            <h3 class="team-name">Дмитрий Волков</h3>
+            <div class="team-fact">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Сертифицированный партнер amoCRM, 60+ внедрений</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Member 3 -->
+        <div class="team-card">
+          <div class="team-img-wrapper">
+            <img src="images/team_sergey.png" alt="Сергей Морозов" class="team-img">
+          </div>
+          <div class="team-info">
+            <span class="team-role">Руководитель Efimov Urban</span>
+            <h3 class="team-name">Сергей Морозов</h3>
+            <div class="team-fact">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>8+ лет в сфере снабжения и технического контроля объектов</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 9: Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <!-- Brand -->
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <span class="logo-main">Efimov Group</span>
+            <span class="logo-sub">Смоленск</span>
+          </a>
+          <p class="footer-address">
+            г. Смоленск, ул. Октябрьской Революции, д. 9, офис 302<br>
+            Режим работы: Пн-Пт с 9:00 до 18:00
+          </p>
+        </div>
+
+        <!-- Col 1 -->
+        <div>
+          <div class="footer-col-title">Efimov Tech</div>
+          <ul class="footer-links">
+            <li class="footer-link-item"><a href="#tech-dept">Внедрение amoCRM</a></li>
+            <li class="footer-link-item"><a href="#tech-dept">Настройка воронки</a></li>
+            <li class="footer-link-item"><a href="#tech-dept">Интеграция IP-телефонии</a></li>
+            <li class="footer-link-item"><a href="#tech-dept">Автоматизация бизнес-процессов</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 2 -->
+        <div>
+          <div class="footer-col-title">Efimov Consult</div>
+          <ul class="footer-links">
+            <li class="footer-link-item"><a href="#consult-dept">Аудит отдела продаж</a></li>
+            <li class="footer-link-item"><a href="#consult-dept">Разработка регламентов</a></li>
+            <li class="footer-link-item"><a href="#consult-dept">Услуга «РОП в аренду»</a></li>
+            <li class="footer-link-item"><a href="#consult-dept">Обучение менеджеров</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3 -->
+        <div>
+          <div class="footer-col-title">Efimov Urban</div>
+          <ul class="footer-links">
+            <li class="footer-link-item"><a href="#urban-dept">Снабжение под ключ</a></li>
+            <li class="footer-link-item"><a href="#urban-dept">Контроль строителей</a></li>
+            <li class="footer-link-item"><a href="#urban-dept">Переезд офисов и домов</a></li>
+            <li class="footer-link-item"><a href="#urban-dept">Нестандартные поручения</a></li>
+          </ul>
+        </div>
+
+        <!-- Contacts -->
+        <div class="footer-contacts">
+          <div class="footer-col-title">Контакты</div>
+          <a href="tel:+79991234567" class="footer-phone-num">+7 (999) 123-45-67</a>
+          <a href="mailto:info@efimov-group.ru" style="color: var(--text-light-secondary); text-decoration: none; font-size: 14px;">info@efimov-group.ru</a>
+          
+          <div class="footer-social-links">
+            <a href="https://t.me/efimov_group_bot" target="_blank" class="footer-social-btn" aria-label="Наш Telegram бот">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-1-.65-.35-1 .22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.02-1.96 1.24-5.54 3.65-.52.36-.99.53-1.4.52-.46-.01-1.34-.26-1.99-.47-.8-.26-1.43-.4-1.38-.85.03-.23.35-.47.97-.73 3.79-1.65 6.31-2.73 7.57-3.25 3.6-1.48 4.35-1.74 4.84-1.75.11 0 .35.03.5.16.13.11.16.27.18.38-.01.06-.01.12-.02.19z"/></svg>
+            </a>
+            <a href="https://wa.me/79991234567" target="_blank" class="footer-social-btn" aria-label="Связаться в WhatsApp">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.739-1.456L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.01 14.067.989 11.45.989 6.015.989 1.593 5.36 1.59 10.789c-.001 1.734.464 3.426 1.346 4.937L1.93 20.246l4.717-1.092zM17.483 14.17c-.33-.165-1.951-.963-2.254-1.073-.303-.11-.524-.165-.744.165-.22.329-.85.107-1.042.33-.192.22-.384.247-.714.082-.33-.165-1.393-.513-2.653-1.636-.98-.874-1.64-1.953-1.832-2.282-.193-.33-.02-.508.145-.671.149-.148.33-.384.495-.576.165-.192.22-.33.33-.549.11-.22.055-.412-.028-.576-.082-.165-.744-1.792-1.019-2.454-.268-.644-.542-.556-.744-.566-.192-.01-.413-.012-.634-.012-.22 0-.578.082-.88.412-.303.33-1.156 1.13-1.156 2.756s1.184 3.19 1.349 3.41c.165.22 2.33 3.56 5.645 4.99.789.34 1.405.544 1.885.698.792.25 1.513.215 2.083.13.636-.094 1.952-.798 2.227-1.57.275-.77.275-1.43.192-1.57-.082-.138-.303-.22-.633-.385z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- amoCRM partner section -->
+        <div class="footer-partner-box">
+          <div class="footer-col-title">Авторизация</div>
+          <span class="partner-badge" style="padding: 8px 16px;">Partner of amoCRM</span>
+          <span style="font-size: 11px; color: var(--text-light-secondary);">Лицензия № 16298-C</span>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          <span>© 2021-2026 Efimov Group. Все права защищены.</span>
+          <br>
+          <span style="font-size: 10px; color: var(--text-light-secondary); margin-top: 4px; display: inline-block;">
+            ООО «Ефимов Груп» · ИНН 6732123456 · ОГРН 1216700012345 · г. Смоленск, ОГРН зарегистр. 12.04.2021
+          </span>
+        </div>
+        <div class="footer-legal-links">
+          <a href="#">Политика конфиденциальности</a>
+          <a href="#">Договор оферты</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript file -->
+  <script src="js/main.js"></script>
+</body>
+</html>
