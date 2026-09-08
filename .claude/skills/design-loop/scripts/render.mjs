@@ -74,11 +74,23 @@ async function findChrome() {
       }
     }
   }
+  const pf = process.env['PROGRAMFILES'] || 'C:\\Program Files';
+  const pf86 = process.env['PROGRAMFILES(X86)'] || 'C:\\Program Files (x86)';
+  const local = process.env['LOCALAPPDATA'] || path.join(os.homedir(), 'AppData', 'Local');
   const fixed = [
+    // macOS
     '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
     '/Applications/Chromium.app/Contents/MacOS/Chromium',
+    '/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge',
+    // Linux
     '/usr/bin/google-chrome', '/usr/bin/google-chrome-stable',
     '/usr/bin/chromium', '/usr/bin/chromium-browser',
+    // Windows: Edge тоже на Chromium и умеет CDP, поэтому годится запасным вариантом
+    path.join(pf, 'Google/Chrome/Application/chrome.exe'),
+    path.join(pf86, 'Google/Chrome/Application/chrome.exe'),
+    path.join(local, 'Google/Chrome/Application/chrome.exe'),
+    path.join(pf86, 'Microsoft/Edge/Application/msedge.exe'),
+    path.join(pf, 'Microsoft/Edge/Application/msedge.exe'),
   ];
   return fixed.find((p) => existsSync(p)) || null;
 }
