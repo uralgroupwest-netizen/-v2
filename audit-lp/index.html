@@ -1,0 +1,437 @@
+<title>Аудит отдела продаж</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Golos+Text:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ink:#111214;
+  --ink-2:#2B2C30;
+  --paper:#F2F1EE;
+  --surface:#FFFFFF;
+  --surface-2:#E9E7E2;
+  --line:#D8D5CE;
+  --muted:#7C7973;
+  --red:#D8151D;
+  --red-soft:#FBE9EA;
+  --good:#1F7A4C;
+  --shadow:rgba(17,18,20,.08);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ink:#F2F1EE;
+    --ink-2:#C9C6C0;
+    --paper:#111214;
+    --surface:#191A1E;
+    --surface-2:#232428;
+    --line:#33343A;
+    --muted:#8E8A85;
+    --red:#F0454C;
+    --red-soft:#2A1618;
+    --good:#4FBF88;
+    --shadow:rgba(0,0,0,.5);
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#F2F1EE;
+  --ink-2:#C9C6C0;
+  --paper:#111214;
+  --surface:#191A1E;
+  --surface-2:#232428;
+  --line:#33343A;
+  --muted:#8E8A85;
+  --red:#F0454C;
+  --red-soft:#2A1618;
+  --good:#4FBF88;
+  --shadow:rgba(0,0,0,.5);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Golos Text","PT Sans","Helvetica Neue",Arial,sans-serif;
+  font-size:16px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{
+  font-family:Oswald,"PT Sans Narrow","Arial Narrow",Arial,sans-serif;
+  font-weight:600;
+  line-height:1.06;
+  letter-spacing:-.005em;
+  text-wrap:balance;
+  margin:0;
+}
+p{margin:0}
+a{color:var(--red);text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible,button:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+.sect{padding:64px 0;border-top:1px solid var(--line)}
+.sect:first-of-type{border-top:0}
+
+/* двухколоночная разметка отчёта: подпись слева, содержание справа */
+.grid{display:grid;grid-template-columns:150px minmax(0,1fr);gap:32px}
+@media(max-width:820px){.grid{grid-template-columns:1fr;gap:16px}}
+.eyebrow{
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--red);padding-top:8px;
+}
+.lede{font-size:19px;line-height:1.55;color:var(--ink-2);max-width:60ch}
+.small{font-size:14px;color:var(--muted);line-height:1.6}
+
+/* скос 45° — тот же приём, что в знаке */
+.chamfer{clip-path:polygon(0 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%)}
+
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--red);color:#fff;
+  font-family:Oswald,Arial,sans-serif;font-weight:600;font-size:17px;
+  letter-spacing:.02em;text-transform:uppercase;
+  padding:15px 26px 14px;border:0;cursor:pointer;
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 13px),calc(100% - 13px) 100%,0 100%);
+}
+.btn:hover{background:var(--ink);text-decoration:none}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:10px;
+  border:1.5px solid var(--line);color:var(--ink);
+  font-family:Oswald,Arial,sans-serif;font-weight:500;font-size:16px;
+  letter-spacing:.02em;text-transform:uppercase;padding:14px 22px 13px;
+}
+.btn-ghost:hover{border-color:var(--ink);text-decoration:none}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+
+/* ── шапка ── */
+.top{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:20px 0;flex-wrap:wrap}
+.brandline{display:flex;align-items:center;gap:14px}
+.desc{
+  font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--muted);border-left:1px solid var(--line);padding-left:14px;
+}
+@media(max-width:640px){.desc{display:none}}
+
+/* ── герой ── */
+.hero{padding:44px 0 60px}
+.hero h1{font-size:clamp(38px,6.4vw,74px);text-transform:uppercase}
+.hero h1 em{font-style:normal;color:var(--red)}
+.hero-sub{margin-top:22px;font-size:20px;line-height:1.5;color:var(--ink-2);max-width:56ch}
+.hero-cta{margin-top:34px}
+.hero-meta{
+  margin-top:34px;padding-top:20px;border-top:1px solid var(--line);
+  display:flex;flex-wrap:wrap;gap:14px 40px;
+}
+.hero-meta div{display:flex;flex-direction:column;gap:2px}
+.hero-meta b{font-family:Oswald,Arial,sans-serif;font-size:26px;font-weight:600;font-variant-numeric:tabular-nums}
+.hero-meta span{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+/* ── списки-признаки ── */
+.checks{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+.checks li{display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start}
+.tick{width:14px;height:14px;background:var(--red);margin-top:7px;
+  clip-path:polygon(0 0,100% 0,100% 60%,60% 100%,0 100%)}
+
+/* ── потери воронки: нумерация оправдана, это последовательность стадий ── */
+.stages{display:grid;gap:0;border:1px solid var(--line);background:var(--surface)}
+.stage{display:grid;grid-template-columns:56px minmax(0,1fr);border-top:1px solid var(--line)}
+.stage:first-child{border-top:0}
+.stage-n{
+  font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--muted);
+  display:flex;align-items:center;justify-content:center;
+  border-right:1px solid var(--line);background:var(--surface-2);
+}
+.stage-b{padding:16px 20px;display:flex;flex-direction:column;gap:4px}
+.stage-b b{font-family:Oswald,Arial,sans-serif;font-size:18px;font-weight:500}
+.stage-b span{font-size:14.5px;color:var(--ink-2);line-height:1.55}
+
+/* ── карточка продукта ── */
+.product{background:var(--ink);color:var(--paper);padding:38px 34px;display:grid;gap:26px}
+:root[data-theme="dark"] .product,:root:not([data-theme="light"]) .product{background:var(--surface-2)}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]) .product{background:#111214;color:#F2F1EE}}
+.product h3{font-size:30px;text-transform:uppercase;color:inherit}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:22px}
+.pcell span{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;opacity:.62;display:block;margin-bottom:6px}
+.pcell b{font-family:Oswald,Arial,sans-serif;font-size:23px;font-weight:500;display:block;font-variant-numeric:tabular-nums}
+.pcell p{font-size:14.5px;opacity:.86;line-height:1.55}
+.plist{list-style:none;margin:0;padding:0;display:grid;gap:9px;font-size:15.5px}
+.plist li{display:grid;grid-template-columns:16px 1fr;gap:11px}
+.plist i{width:8px;height:8px;background:var(--red);margin-top:8px;font-style:normal}
+.ph{background:var(--red-soft);color:var(--red);padding:1px 7px;font-family:"JetBrains Mono",monospace;font-size:13px;white-space:nowrap}
+
+/* ── таблица результатов ── */
+.tablewrap{overflow-x:auto;border:1px solid var(--line);background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:620px}
+th,td{text-align:left;padding:13px 16px;border-top:1px solid var(--line);vertical-align:top}
+thead th{
+  border-top:0;background:var(--surface-2);
+  font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--muted);font-weight:400;
+}
+tbody td{font-size:15px;line-height:1.5}
+td.res{font-family:Oswald,Arial,sans-serif;font-size:17px;font-weight:500;color:var(--red);white-space:nowrap;font-variant-numeric:tabular-nums}
+td.where b{font-family:Oswald,Arial,sans-serif;font-weight:500;font-size:16px;display:block}
+td.where span{font-size:13px;color:var(--muted)}
+
+/* ── шаги ── */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.step{background:var(--surface);padding:22px 20px;display:flex;flex-direction:column;gap:8px}
+.step em{font-family:"JetBrains Mono",monospace;font-style:normal;font-size:11px;letter-spacing:.13em;color:var(--red)}
+.step b{font-family:Oswald,Arial,sans-serif;font-size:19px;font-weight:500}
+.step p{font-size:14.5px;color:var(--ink-2);line-height:1.55}
+
+/* ── рекомендатели ── */
+.refs{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
+.ref{border-left:2px solid var(--red);padding-left:16px;display:flex;flex-direction:column;gap:3px}
+.ref b{font-family:Oswald,Arial,sans-serif;font-size:17px;font-weight:500}
+.ref span{font-size:14px;color:var(--muted)}
+
+/* ── возражения ── */
+.qa{display:grid;gap:0;border-top:1px solid var(--line)}
+.qa-item{border-bottom:1px solid var(--line);padding:20px 0;display:grid;gap:8px}
+.qa-item b{font-family:Oswald,Arial,sans-serif;font-size:19px;font-weight:500}
+.qa-item p{font-size:15.5px;color:var(--ink-2);max-width:70ch}
+
+/* ── финал ── */
+.final{background:var(--ink);color:var(--paper);padding:52px 34px;display:grid;gap:24px}
+:root[data-theme="dark"] .final,:root:not([data-theme="light"]) .final{background:var(--surface-2)}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]) .final{background:#111214;color:#F2F1EE}}
+.final h2{font-size:clamp(30px,4.6vw,46px);text-transform:uppercase;color:inherit}
+.contacts{display:flex;flex-wrap:wrap;gap:10px 34px;font-family:"JetBrains Mono",monospace;font-size:14px}
+.contacts a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+
+footer{padding:30px 0 46px;display:flex;flex-wrap:wrap;gap:12px 30px;justify-content:space-between;align-items:center}
+footer .small{font-size:12.5px}
+
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+.btn,.btn-ghost{transition:background .15s ease,border-color .15s ease}
+</style>
+
+<div class="wrap">
+
+  <header class="top">
+    <div class="brandline">
+      <svg width="118" height="51" viewBox="0 0 300 130" aria-label="Efimov Group" role="img">
+        <polygon points="10,8 112,8 90,30 10,30" fill="var(--red)"/>
+        <polygon points="10,54 215,54 193,76 10,76" fill="var(--red)"/>
+        <polygon points="10,100 112,100 90,122 10,122" fill="var(--red)"/>
+        <polygon points="132,8 290,8 290,30 110,30" fill="var(--ink)"/>
+        <rect x="110" y="30" width="22" height="70" fill="var(--ink)"/>
+        <rect x="110" y="100" width="180" height="22" fill="var(--ink)"/>
+        <rect x="268" y="54" width="22" height="68" fill="var(--ink)"/>
+        <polygon points="215,54 290,54 290,76 193,76" fill="var(--ink)"/>
+      </svg>
+      <span class="desc">CRM · Сайты · Отделы продаж</span>
+    </div>
+    <a class="btn-ghost" href="https://t.me/as_efimov07">Написать в Telegram</a>
+  </header>
+
+  <!-- ГЕРОЙ -->
+  <section class="hero">
+    <h1>Найду, где ваш отдел продаж <em>теряет деньги</em></h1>
+    <p class="hero-sub">Пять дней, разбор воронки и CRM, отчёт с планом на 30 дней. Без презентаций про «системный подход» — конкретные места утечки и что с ними делать.</p>
+    <div class="hero-cta cta-row">
+      <a class="btn" href="https://t.me/as_efimov07">Обсудить задачу</a>
+      <a class="btn-ghost" href="#chto">Что входит в аудит</a>
+    </div>
+    <div class="hero-meta">
+      <div><b>17 лет</b><span>в продажах</span></div>
+      <div><b>20+</b><span>ниш B2B и B2C</span></div>
+      <div><b>6 стран</b><span>СНГ</span></div>
+      <div><b>до 35</b><span>человек в команде</span></div>
+    </div>
+  </section>
+
+  <!-- КОМУ -->
+  <section class="sect grid">
+    <div class="eyebrow">Кому</div>
+    <div style="display:grid;gap:22px">
+      <h2 style="font-size:clamp(26px,3.6vw,38px);text-transform:uppercase">Вам это нужно, если совпадает хотя бы два пункта</h2>
+      <ul class="checks">
+        <li><i class="tick"></i><span>Отдел продаж есть, а план не выполняется — и никто не может объяснить, почему именно.</span></li>
+        <li><i class="tick"></i><span>Заявки приходят, но что с ними происходит дальше, видно только со слов менеджеров.</span></li>
+        <li><i class="tick"></i><span>CRM куплена и стоит мёртвая: сделки ведутся в голове, в блокноте или в переписке.</span></li>
+        <li><i class="tick"></i><span>Выручка держится на одном-двух сильных менеджерах, и вы понимаете, чем это кончится.</span></li>
+        <li><i class="tick"></i><span>Рекламный бюджет растёт быстрее, чем выручка.</span></li>
+      </ul>
+      <p class="small">Если ничего из этого не про вас — аудит не нужен, и я скажу это на первом же созвоне.</p>
+    </div>
+  </section>
+
+  <!-- ГДЕ ТЕРЯЮТСЯ ДЕНЬГИ -->
+  <section class="sect grid">
+    <div class="eyebrow">Диагноз</div>
+    <div style="display:grid;gap:22px">
+      <h2 style="font-size:clamp(26px,3.6vw,38px);text-transform:uppercase">Деньги уходят не там, где их ищут</h2>
+      <p class="lede">Собственник обычно смотрит на верх воронки — «мало лидов». В большинстве случаев потери сидят ниже и их не видно без разбора. Порядок стадий здесь не декоративный: каждая следующая теряет то, что не удержала предыдущая.</p>
+      <div class="stages">
+        <div class="stage"><div class="stage-n">01</div><div class="stage-b"><b>Скорость первого касания</b><span>Лид ждёт ответа часы вместо минут. К моменту звонка он уже разговаривает с конкурентом.</span></div></div>
+        <div class="stage"><div class="stage-n">02</div><div class="stage-b"><b>Потери входящего трафика</b><span>Часть обращений не доходит до CRM вообще: потерялись в почте, в мессенджере, в пропущенном звонке.</span></div></div>
+        <div class="stage"><div class="stage-n">03</div><div class="stage-b"><b>Провал в середине воронки</b><span>Сделки зависают на этапе «отправили КП» и умирают там без единого касания.</span></div></div>
+        <div class="stage"><div class="stage-n">04</div><div class="stage-b"><b>Конверсия в закрытие</b><span>Каждый менеджер продаёт как умеет. Работающие приёмы не описаны и не тиражируются.</span></div></div>
+        <div class="stage"><div class="stage-n">05</div><div class="stage-b"><b>Убыточные каналы и клиенты</b><span>Часть выручки приносит отрицательную маржу, и это видно только после разбора по данным, а не по ощущениям.</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ПРОДУКТ -->
+  <section class="sect grid" id="chto">
+    <div class="eyebrow">Продукт</div>
+    <div style="display:grid;gap:22px">
+      <div class="product chamfer">
+        <div style="display:grid;gap:12px">
+          <h3>Экспресс-аудит отдела продаж</h3>
+          <p style="font-size:17px;opacity:.9;max-width:58ch">Не консультация и не обучение. Разбор того, что у вас происходит на самом деле, и документ, по которому можно работать без меня.</p>
+        </div>
+        <div class="product-grid">
+          <div class="pcell"><span>Срок</span><b>5 рабочих дней</b><p>От старта до отчёта.</p></div>
+          <div class="pcell"><span>Стоимость</span><b><span class="ph">[ЦЕНА]</span></b><p>Фиксированная, без доплат по ходу.</p></div>
+          <div class="pcell"><span>От вас</span><b>4–6 часов</b><p>Доступ к CRM, записи звонков, один созвон.</p></div>
+        </div>
+        <div style="display:grid;gap:12px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;opacity:.62">Что получаете на выходе</span>
+          <ul class="plist">
+            <li><i></i><span>Карта воронки с цифрами по каждому этапу: где сколько теряется.</span></li>
+            <li><i></i><span>Разбор записей звонков — что менеджеры делают не так и в каком объёме.</span></li>
+            <li><i></i><span>Состояние CRM: что не настроено, что не заполняется, что не видно руководителю.</span></li>
+            <li><i></i><span>Маржинальность по каналам и клиентам — какие из них работают в минус.</span></li>
+            <li><i></i><span>План на 30 дней: список задач по приоритету, с ответственными и сроками.</span></li>
+            <li><i></i><span>Разбор отчёта голосом, час, с ответами на вопросы.</span></li>
+          </ul>
+        </div>
+      </div>
+      <p class="small">Аудит — это вход. Если после него захотите, чтобы кто-то реализовал план руками, — об этом ниже. Если не захотите, отчёт всё равно остаётся у вас и работает без меня.</p>
+    </div>
+  </section>
+
+  <!-- ЦИФРЫ -->
+  <section class="sect grid">
+    <div class="eyebrow">Результаты</div>
+    <div style="display:grid;gap:22px">
+      <h2 style="font-size:clamp(26px,3.6vw,38px);text-transform:uppercase">Что менялось у тех, с кем работал</h2>
+      <p class="lede">Все цифры — из моего рабочего опыта, а не из презентации. Каждую можно подтвердить рекомендацией: контакты трёх руководителей — ниже.</p>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Где</th><th>Что делал</th><th>Результат</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="where"><b>Аутсорсинг РОПов</b><span>штат ~100 · 2023–2026</span></td>
+              <td>Автосценарии в CRM, регламенты обработки лидов, аудит переговоров</td>
+              <td class="res">Обработка лидов<br>быстрее в 2,5 раза</td>
+            </tr>
+            <tr>
+              <td class="where"><b>Аутсорсинг РОПов</b><span>штат ~100 · 2023–2026</span></td>
+              <td>Сквозная аналитика и контроль этапов воронки</td>
+              <td class="res">Потери входящего<br>трафика −30%</td>
+            </tr>
+            <tr>
+              <td class="where"><b>Аутсорсинг РОПов</b><span>штат ~100 · 2023–2026</span></td>
+              <td>Система наставничества и скрипты продаж</td>
+              <td class="res">Конверсия<br>в закрытие +15%</td>
+            </tr>
+            <tr>
+              <td class="where"><b>Доставка воды</b><span>штат 10 · с 2026</span></td>
+              <td>Аудит продаж и маржинальности по данным CRM, B2B-сайт с amoCRM и сквозной аналитикой</td>
+              <td class="res">Прибыль компании<br>+32% за период</td>
+            </tr>
+            <tr>
+              <td class="where"><b>Инжиниринг, B2B</b><span>2015–2019</span></td>
+              <td>Оптимизация подготовки ТЗ и коммерческих предложений</td>
+              <td class="res">Цикл сделки<br>короче на 25–30%</td>
+            </tr>
+            <tr>
+              <td class="where"><b>Дилер автозапчастей</b><span>штат 100+ · 2013–2015</span></td>
+              <td>KPI, наставничество, расширение активной базы</td>
+              <td class="res">Выручка<br>+14–20%</td>
+            </tr>
+            <tr>
+              <td class="where"><b>Фитнес-клуб</b><span>2019–2021</span></td>
+              <td>Скрипты допродаж и пакетные предложения</td>
+              <td class="res">Средний чек +20%<br>LTV +12–16%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small">Выполнение плана продаж удерживал в диапазоне 90–110% на протяжении всего нестабильного рыночного цикла 2023–2026 годов.</p>
+    </div>
+  </section>
+
+  <!-- КАК ПРОХОДИТ -->
+  <section class="sect grid">
+    <div class="eyebrow">Процесс</div>
+    <div style="display:grid;gap:22px">
+      <h2 style="font-size:clamp(26px,3.6vw,38px);text-transform:uppercase">Как проходит аудит</h2>
+      <div class="steps">
+        <div class="step"><em>ДЕНЬ 0</em><b>Созвон 30 минут</b><p>Разбираемся, есть ли вообще предмет. Если нет — говорю прямо и не беру деньги.</p></div>
+        <div class="step"><em>ДНИ 1–2</em><b>Доступы и данные</b><p>CRM, записи звонков, отчёты, рекламные кабинеты. Подписываем NDA, если нужно.</p></div>
+        <div class="step"><em>ДНИ 3–4</em><b>Разбор</b><p>Считаю воронку по этапам, слушаю звонки, свожу маржинальность по каналам.</p></div>
+        <div class="step"><em>ДЕНЬ 5</em><b>Отчёт и разбор</b><p>Документ с находками и планом на 30 дней. Час голосом на вопросы.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ДАЛЬШЕ -->
+  <section class="sect grid">
+    <div class="eyebrow">Дальше</div>
+    <div style="display:grid;gap:18px">
+      <h2 style="font-size:clamp(26px,3.6vw,38px);text-transform:uppercase">Если нужно, чтобы план кто-то выполнил</h2>
+      <p class="lede">Тогда я захожу как руководитель отдела продаж или коммерческий директор на аутсорсе: веду отдел, отвечаю за цифры, работаю по вашим KPI. Это отдельная работа с помесячной оплатой — обсуждаем после аудита, когда обоим понятно, за что беремся.</p>
+      <p class="lede">Отдельно — настройка amoCRM и Битрикс24, сквозная аналитика, сайты. Лицензии вы покупаете напрямую у вендора, я беру только за работу.</p>
+    </div>
+  </section>
+
+  <!-- КТО -->
+  <section class="sect grid">
+    <div class="eyebrow">Кто ведёт</div>
+    <div style="display:grid;gap:22px">
+      <h2 style="font-size:clamp(26px,3.6vw,38px);text-transform:uppercase">Антон Ефимов</h2>
+      <p class="lede">Коммерческий руководитель с 17-летним опытом в B2B и B2C. Прошёл путь от менеджера по продажам до собственника бизнеса и директора по продажам. Строил отделы продаж с нуля в 20+ нишах на рынках шести стран СНГ, управлял командами от 2 до 35 человек.</p>
+      <p class="lede">В 2021–2023 годах руководил собственным бизнесом, продал его в 2023. Там, где у клиента не было маркетинга, закрывал его сам: контекстная реклама, сайты, тексты. Поэтому разбор не останавливается на границе отдела продаж — если проблема в рекламе или на сайте, я её тоже увижу.</p>
+      <div class="refs">
+        <div class="ref"><b>Ещенко Алла</b><span>Директор по развитию, ООО «РентРоп»</span></div>
+        <div class="ref"><b>Куаныш</b><span>Собственник, ТОО «Alisti»</span></div>
+        <div class="ref"><b>Пещерский А. И.</b><span>Собственник, ООО «Автокомпания Медведь»</span></div>
+      </div>
+      <p class="small">Контакты рекомендателей даю по запросу — звоните и спрашивайте что угодно.</p>
+    </div>
+  </section>
+
+  <!-- ВОЗРАЖЕНИЯ -->
+  <section class="sect grid">
+    <div class="eyebrow">Вопросы</div>
+    <div style="display:grid;gap:22px">
+      <h2 style="font-size:clamp(26px,3.6vw,38px);text-transform:uppercase">Что обычно спрашивают</h2>
+      <div class="qa">
+        <div class="qa-item"><b>Мы и сами знаем свои проблемы. Зачем платить за это?</b><p>Знаете симптомы. Аудит даёт цифры: не «менеджеры плохо работают», а «на этапе КП теряется столько-то сделок, потому что до них не дотягиваются в срок». С цифрой можно работать, с ощущением — нельзя.</p></div>
+        <div class="qa-item"><b>Пять дней — это несерьёзно, за такой срок ничего не поймёшь.</b><p>Не поймёшь всё. Поймёшь главное: где именно течёт и что чинить первым. Если после первого созвона станет ясно, что задача глубже, — скажу прямо и назову другой срок, а не буду растягивать за ваш счёт.</p></div>
+        <div class="qa-item"><b>Мы уже нанимали консультантов. Получили презентацию и тишину.</b><p>Поэтому на выходе не презентация, а план на 30 дней с задачами, ответственными и сроками. И поэтому есть второй шаг: если хотите, чтобы план выполнили руками, я захожу в отдел и отвечаю за результат сам.</p></div>
+        <div class="qa-item"><b>Мы не отдадим доступ к CRM постороннему.</b><p>Нормальное требование. Подписываем NDA до любых доступов. Часть разбора можно провести на выгрузках, без прямого доступа к системе, — будет чуть дольше.</p></div>
+        <div class="qa-item"><b>Что, если аудит ничего не найдёт?</b><p>Тогда вы получите документ, подтверждающий, что отдел продаж в порядке, и искать причину надо в другом месте — в продукте, цене или рынке. Это тоже результат, и он дешевле, чем полгода менять менеджеров наугад.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ФИНАЛ -->
+  <section style="padding:36px 0 20px">
+    <div class="final chamfer">
+      <h2>Начнём с разговора<br>на тридцать минут</h2>
+      <p style="font-size:18px;opacity:.9;max-width:56ch">Расскажете, что происходит с продажами. Скажу, есть ли здесь предмет для аудита и что бы я делал на вашем месте. Бесплатно и без презентаций.</p>
+      <div class="cta-row">
+        <a class="btn" href="https://t.me/as_efimov07">Написать в Telegram</a>
+        <a class="btn-ghost" style="border-color:rgba(242,241,238,.35);color:inherit" href="https://wa.me/77051052216">WhatsApp</a>
+      </div>
+      <div class="contacts">
+        <a href="tel:+77051052216">+7 705 105-22-16</a>
+        <a href="https://t.me/as_efimov07">@as_efimov07</a>
+        <span><span class="ph">[почта на домене]</span></span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="small">Efimov&nbsp;Group — отвечаем именем</div>
+    <div class="small"><span class="ph">[ссылка на политику обработки персональных данных]</span></div>
+  </footer>
+
+</div>
