@@ -373,6 +373,65 @@ html.intro-done .intro{display:none}
   text-transform:uppercase;color:rgba(17,18,20,.34);opacity:0;
   animation:tIn .8s ease-out 1.1s forwards,tOut .4s ease-in 3.3s forwards}
 
+/* ---------- блок «Отвечаем именем» ---------- */
+.name{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(28px,4vw,64px);align-items:start}
+.name__ph{margin:0}
+.name__img{position:relative;aspect-ratio:4/5;background:var(--lt2);display:grid;place-items:center;overflow:hidden;
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 28px),calc(100% - 28px) 100%,0 100%);
+  box-shadow:0 0 0 1px rgba(17,18,20,.08),0 18px 32px -14px rgba(17,18,20,.24)}
+.name__img img{width:100%;height:100%;object-fit:cover;object-position:center top;grid-area:1/1}
+.name__img .ph{display:none}
+.name__img.is-empty .ph{display:block}
+.name__ph figcaption{margin-top:12px}
+.name__h{text-align:left!important;margin-left:0!important;margin-right:0!important;max-width:18ch}
+.name__tx p{margin-top:18px;color:var(--on-l-mut);max-width:58ch}
+.name__sig{border-left:2px solid var(--red);padding-left:18px;color:var(--on-l)!important}
+@media(max-width:820px){.name{grid-template-columns:1fr}.name__img{aspect-ratio:3/2}}
+
+/* ---------- FAQ ---------- */
+.faq{margin-top:clamp(36px,5vw,64px);border-top:1px solid rgba(230,228,223,.12);max-width:920px}
+.q{border-bottom:1px solid rgba(230,228,223,.12)}
+.q summary{display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding:22px 0;cursor:pointer;list-style:none;
+  font-size:clamp(16px,1.25vw,19px);font-weight:500;letter-spacing:-.012em;transition:color .2s}
+.q summary::-webkit-details-marker{display:none}
+.q summary:hover{color:var(--red)}
+.q summary i{position:relative;flex:0 0 auto;width:13px;height:13px}
+.q summary i::before,.q summary i::after{content:"";position:absolute;background:var(--red);
+  transition:transform .25s cubic-bezier(.4,0,.2,1)}
+.q summary i::before{left:0;top:6px;width:13px;height:1.5px}
+.q summary i::after{left:6px;top:0;width:1.5px;height:13px}
+.q[open] summary i::after{transform:rotate(90deg)}
+.q p{padding:0 0 24px;max-width:66ch;color:var(--on-d-mut);
+  font-size:clamp(15px,1vw,16px);line-height:1.6}
+
+/* ---------- кнопка наверх ---------- */
+.totop{position:fixed;right:clamp(16px,3vw,32px);bottom:clamp(16px,3vw,32px);z-index:45;
+  width:46px;height:46px;display:grid;place-items:center;cursor:pointer;
+  background:var(--ink2);color:var(--on-d);border:1px solid rgba(230,228,223,.2);
+  opacity:0;transform:translateY(10px);transition:opacity .3s,transform .3s,border-color .2s,color .2s;
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%)}
+.totop.on{opacity:1;transform:translateY(0)}
+.totop:hover{border-color:var(--red);color:var(--red)}
+.totop svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;
+  stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- свечение под курсором на главной кнопке ---------- */
+.btn{position:relative;isolation:isolate;overflow:hidden}
+.btn::after{content:"";position:absolute;inset:0;z-index:-1;opacity:0;
+  transition:opacity .25s ease-out;
+  background:radial-gradient(120px 120px at var(--mx,50%) var(--my,50%),
+    rgba(255,255,255,.42) 0%,rgba(255,255,255,.14) 38%,transparent 72%)}
+.btn:hover::after{opacity:1}
+.btn--g::after{background:radial-gradient(140px 140px at var(--mx,50%) var(--my,50%),
+    rgba(224,31,38,.30) 0%,rgba(224,31,38,.10) 42%,transparent 74%)}
+
+/* подсказка в заставке */
+.intro__skip{position:fixed;left:50%;bottom:5.5%;transform:translateX(-50%);
+  font-family:var(--m);font-size:9.5px;font-weight:500;letter-spacing:.22em;
+  text-transform:uppercase;color:rgba(17,18,20,.34);opacity:0;
+  animation:tIn .8s ease-out 1.1s forwards,tOut .4s ease-in 3.3s forwards}
+
 /* ---------- карусель работ ---------- */
 .work{position:relative;overflow:hidden}
 .work__tint{position:absolute;inset:0;z-index:0;pointer-events:none;
@@ -431,12 +490,7 @@ html.intro-done .intro{display:none}
 .work__l span{font-size:clamp(14px,.95vw,15px);line-height:1.5;color:var(--on-d-mut)}
 @media(max-width:820px){.work__tx{grid-template-columns:1fr}}
 
-/* соседние слайды приглушены и отклонены — фокус на текущем */
-.slide:not(.on){opacity:.42}
-.slide.before{transform:rotateY(7deg) scale(.955);transform-origin:right center}
-.slide.after {transform:rotateY(-7deg) scale(.955);transform-origin:left center}
-@media(max-width:820px){
-  .rail{padding:0 6%;perspective:none}
+
   .slide{flex:0 0 88%}
   .slide.before,.slide.after{transform:none}
 }
@@ -449,6 +503,242 @@ html.intro-done .intro{display:none}
 .name__img::after{content:"";position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(90deg,transparent 62%,rgba(242,241,238,.55) 100%)}
 @media (prefers-reduced-motion:reduce){.name__img img{transition:none}}
+
+/* ================= КАРУСЕЛЬ РАБОТ ================= */
+.work{position:relative;overflow:hidden;padding:clamp(48px,6vw,88px) 0 clamp(40px,5vw,72px);
+  background:var(--ink)}
+/* фон: плоский тон + концентрические контуры, меняется вместе со слайдом */
+.work__bg{position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    repeating-radial-gradient(circle at 14% 46%,
+      transparent 0 46px, var(--ring,#2C4A3E) 46px 48px),
+    var(--tint,#16211D);
+  opacity:.9;transition:background 1.05s cubic-bezier(.4,0,.2,1)}
+.work__bg::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(17,18,20,.55) 0%,rgba(17,18,20,.15) 35%,rgba(17,18,20,.9) 100%)}
+.work>*:not(.work__bg){position:relative;z-index:1}
+
+.work__head{display:flex;align-items:flex-end;justify-content:space-between;gap:28px;flex-wrap:wrap}
+.work__title{font-size:clamp(27px,3.4vw,48px);line-height:1.08;letter-spacing:-.028em;
+  font-weight:600;margin-top:14px}
+
+/* стеклянный сегментированный фильтр */
+.seg{--sg:rgba(255,255,255,.06);position:relative;display:flex;width:fit-content;
+  background:var(--sg);backdrop-filter:blur(12px);overflow:hidden;
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 11px),calc(100% - 11px) 100%,0 100%);
+  box-shadow:inset 1px 1px 4px rgba(255,255,255,.16),
+             inset -1px -1px 6px rgba(0,0,0,.34), 0 4px 12px rgba(0,0,0,.18)}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg label{position:relative;z-index:2;min-width:104px;padding:11px 20px;cursor:pointer;
+  text-align:center;font-family:var(--m);font-size:11px;font-weight:500;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--on-d-mut);transition:color .3s ease}
+.seg label:hover{color:var(--on-d)}
+.seg input:checked + label{color:var(--lt)}
+.seg__glide{position:absolute;top:0;bottom:0;left:0;width:calc(100%/3);z-index:1;
+  background:linear-gradient(135deg,rgba(224,31,38,.5),var(--red));
+  box-shadow:0 0 18px rgba(224,31,38,.35),inset 0 0 10px rgba(255,255,255,.22);
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 11px),calc(100% - 11px) 100%,0 100%);
+  transition:transform .5s cubic-bezier(.37,1.55,.66,.8)}
+#wf-live:checked ~ .seg__glide{transform:translateX(100%)}
+#wf-demo:checked ~ .seg__glide{transform:translateX(200%)}
+
+/* колода панелей */
+.deck{position:relative;height:clamp(340px,52vw,620px);margin-top:clamp(28px,3.4vw,52px);
+  perspective:1700px;transform-style:preserve-3d}
+.deck:focus-visible{outline:2px solid var(--red);outline-offset:6px}
+.pane{position:absolute;top:0;left:50%;width:min(76vw,1080px);height:100%;
+  margin-left:min(-38vw,-540px);
+  transform:translate3d(calc(var(--o,0) * 82%),0,0) rotateY(calc(var(--o,0) * -13deg)) rotate(-1.1deg) scale(var(--sc,1));
+  opacity:var(--op,1);z-index:var(--z,1);
+  transition:transform .72s cubic-bezier(.32,.02,.2,1),opacity .6s ease;
+  will-change:transform}
+.pane[data-off="0"]{--sc:1;--op:1;--z:5}
+.pane[data-off="1"],.pane[data-off="-1"]{--sc:.9;--op:.5;--z:3}
+.pane[data-off="2"],.pane[data-off="-2"]{--sc:.82;--op:.16;--z:2}
+.pane.far{--sc:.78;--op:0;--z:1;pointer-events:none}
+.pane.hide{display:none}
+
+.pane__shot{position:relative;width:100%;height:100%;overflow:hidden;background:var(--ink2);
+  display:grid;place-items:center;
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 34px),calc(100% - 34px) 100%,0 100%)}
+.pane__shot img{width:100%;height:100%;object-fit:cover;object-position:top center;grid-area:1/1}
+.pane__shot .ph{display:none}
+.pane__shot.is-empty .ph{display:block}
+.pane__shot::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 38%,rgba(10,11,12,.9) 100%)}
+
+/* подпись поверх картинки */
+.pane__hud{position:absolute;left:clamp(20px,3vw,46px);bottom:clamp(22px,3vw,44px);
+  z-index:2;max-width:min(46ch,72%);opacity:0;transform:translateY(14px);
+  transition:opacity .5s ease .1s,transform .5s cubic-bezier(.3,0,.2,1) .1s;pointer-events:none}
+.pane[data-off="0"] .pane__hud{opacity:1;transform:none;pointer-events:auto}
+.chips{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.badge,.chip{font-family:var(--m);font-size:10px;font-weight:500;letter-spacing:.12em;
+  text-transform:uppercase;padding:5px 10px;
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%)}
+.badge{background:rgba(230,228,223,.14);color:var(--on-d)}
+.badge--live{background:var(--red);color:var(--lt)}
+.chip{box-shadow:inset 0 0 0 1px rgba(230,228,223,.26);color:var(--on-d-mut)}
+.pane__h{font-size:clamp(26px,4.4vw,62px);line-height:.98;letter-spacing:-.035em;
+  font-weight:700;text-transform:uppercase;margin:14px 0 0}
+.pane__d{margin:12px 0 0;font-size:clamp(13px,.95vw,15px);line-height:1.5;color:var(--on-d-mut)}
+.pill-out{display:inline-flex;align-items:center;gap:10px;margin-top:20px;padding:11px 24px;
+  font-family:var(--m);font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+  border:1px solid rgba(230,228,223,.5);border-radius:999px;transition:.22s;
+  background:rgba(17,18,20,.35);backdrop-filter:blur(6px)}
+.pill-out:hover{border-color:var(--red);color:var(--red);background:rgba(17,18,20,.6)}
+
+/* стрелки столбиком и лента миниатюр */
+.deck__ui{margin-top:clamp(20px,2.4vw,32px)}
+.deck__ui-in{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.ths{display:flex;gap:8px}
+.th{width:52px;height:38px;display:grid;place-items:center;cursor:pointer;background:none;
+  font-family:var(--m);font-size:10px;letter-spacing:.08em;color:var(--on-d-mut);
+  border:1px solid rgba(230,228,223,.18);transition:.22s;
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 9px),calc(100% - 9px) 100%,0 100%)}
+.th:hover{color:var(--on-d);border-color:rgba(230,228,223,.4)}
+.th.on{background:var(--red);border-color:var(--red);color:var(--lt)}
+.arrows{display:flex;gap:10px}
+.arw{width:44px;height:44px;border-radius:999px;display:grid;place-items:center;cursor:pointer;
+  background:rgba(17,18,20,.4);color:var(--on-d);border:1px solid rgba(230,228,223,.34);
+  transition:.22s;backdrop-filter:blur(6px)}
+.arw:hover{border-color:var(--red);color:var(--red)}
+.arw:disabled{opacity:.3;cursor:default}
+.arw svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;
+  stroke-linecap:round;stroke-linejoin:round}
+
+.work__tx{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,64px);
+  margin-top:clamp(48px,6vw,88px)}
+.work__h{font-size:clamp(20px,1.8vw,27px);line-height:1.2;letter-spacing:-.02em;font-weight:600}
+.work__tx p{margin-top:16px;color:var(--on-d-mut);max-width:52ch}
+.work__l{list-style:none;display:flex;flex-direction:column;gap:18px}
+.work__l li{display:flex;flex-direction:column;gap:5px;padding-left:20px;position:relative}
+.work__l li::before{content:"";position:absolute;left:0;top:.55em;width:9px;height:2px;background:var(--red)}
+.work__l b{font-size:15px;font-weight:600}
+.work__l span{font-size:clamp(14px,.95vw,15px);line-height:1.5;color:var(--on-d-mut)}
+
+@media(max-width:820px){
+  .work__tx{grid-template-columns:1fr}
+  .deck{perspective:none;height:clamp(300px,74vw,420px)}
+  .pane{width:88vw;margin-left:-44vw;
+    transform:translate3d(calc(var(--o,0) * 96%),0,0) scale(var(--sc,1))}
+  .pane__hud{max-width:none;right:clamp(20px,3vw,46px)}
+  .seg label{min-width:0;padding:10px 13px;font-size:10px}
+}
+
+/* ================= ТАКТИЛЬНАЯ КЛАВИША ================= */
+.acts{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(18px,2.4vw,32px);
+  margin:clamp(30px,3.6vw,48px) 0 0}
+
+.key{position:relative;display:inline-block;isolation:isolate;
+  padding:5px;background:linear-gradient(180deg,#2a2d32,#141619);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14), inset 0 -2px 6px rgba(0,0,0,.6),
+             0 10px 26px -10px rgba(0,0,0,.9);
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 16px),calc(100% - 16px) 100%,0 100%)}
+.key__glow{position:absolute;inset:-14px;z-index:-1;opacity:0;
+  background:radial-gradient(60% 70% at 50% 60%,rgba(224,31,38,.55),transparent 72%);
+  filter:blur(16px);transition:opacity .35s ease}
+.key:hover .key__glow{opacity:1}
+.key__cap{display:block;padding:2px;
+  background:linear-gradient(180deg,#3a3e45,#20232a);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16);
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 13px),calc(100% - 13px) 100%,0 100%);
+  transition:transform .12s cubic-bezier(.3,0,.3,1)}
+.key:active .key__cap{transform:translateY(2px)}
+.key__face{display:flex;align-items:center;gap:16px;padding:16px 26px 16px 20px;
+  color:var(--on-d);background:linear-gradient(180deg,#191c21,#0f1114);
+  box-shadow:inset 0 1px 2px rgba(255,255,255,.07), inset 0 -8px 14px -8px rgba(0,0,0,.9);
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 11px),calc(100% - 11px) 100%,0 100%)}
+.key__mark{width:56px;height:auto;flex:0 0 auto;filter:drop-shadow(0 1px 0 rgba(0,0,0,.6))}
+.key__txt{font-family:var(--m);font-size:12px;font-weight:500;letter-spacing:.12em;
+  text-transform:uppercase;white-space:nowrap}
+/* индикатор гаснет в покое и загорается под курсором */
+.key__led{position:absolute;right:16px;top:-4px;width:9px;height:9px;border-radius:999px;
+  background:#3a1113;box-shadow:0 0 0 2px rgba(0,0,0,.55);transition:.35s}
+.key:hover .key__led{background:#ff4b52;
+  box-shadow:0 0 0 2px rgba(0,0,0,.55),0 0 14px 4px rgba(224,31,38,.75)}
+
+/* ================= ПЛАМЕННАЯ КНОПКА ================= */
+.flame{position:relative;display:inline-block;isolation:isolate}
+.flame__aura{position:absolute;inset:-7px;z-index:0;border-radius:999px;pointer-events:none;
+  opacity:var(--edge,0);transition:opacity .18s linear;
+  filter:blur(8px) saturate(1.35);
+  background:radial-gradient(46% 88% at var(--side,50%) 50%,
+    rgba(255,226,190,1) 0%, rgba(224,31,38,.95) 28%,
+    rgba(150,14,20,.5) 52%, rgba(150,14,20,.12) 70%, transparent 82%)}
+.flame__btn{position:relative;z-index:1;display:inline-flex;align-items:center;gap:10px;
+  height:46px;padding:0 26px;border-radius:999px;overflow:hidden;
+  background:linear-gradient(100deg,#cfcfcf 0%,#d6d6d6 40%,#e4e2e0 70%,#f0eeec 100%);
+  color:#2a0b0c;font-family:var(--m);font-size:12px;font-weight:500;
+  letter-spacing:.1em;text-transform:uppercase}
+.flame__spot{position:absolute;inset:0;opacity:0;transition:opacity .15s ease-out;
+  background:
+    radial-gradient(101px 101px at var(--mx,50%) 50%,
+      #fffff5 3.5%, rgba(224,31,38,1) 26.5%, #ffd9a0 37.5%,
+      rgba(224,31,38,.5) 49%, rgba(224,31,38,0) 92.5%)}
+.flame__btn:hover .flame__spot{opacity:.9}
+.flame__lbl,.flame__arw{position:relative;z-index:1}
+.flame__arw{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.4;
+  stroke-linecap:round;stroke-linejoin:round}
+
+.ghost{font-family:var(--m);font-size:12px;font-weight:500;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--on-d-mut);padding-bottom:4px;
+  border-bottom:1px solid rgba(230,228,223,.25);transition:.2s}
+.ghost i{font-style:normal;color:var(--red)}
+.ghost:hover{color:var(--on-d);border-color:var(--red)}
+@media(max-width:560px){.key__txt{font-size:11px}.key__face{padding:14px 18px}}
+
+/* ================= ЦИФРЫ: ПЛАВАЮЩИЕ КАРТОЧКИ ================= */
+.figs__grid{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);
+  gap:clamp(16px,2vw,28px);margin-top:clamp(44px,5.5vw,80px);align-items:start}
+.fig{position:relative;display:flex;flex-direction:column;gap:4px;
+  padding:clamp(20px,2.2vw,30px);background:#FAF9F7;
+  transform:translateY(var(--dy,0));
+  box-shadow:0 0 0 1px rgba(17,18,20,.055),
+             0 20px 25px -5px rgba(17,18,20,.09),
+             0 8px 10px -6px rgba(17,18,20,.07);
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 18px),calc(100% - 18px) 100%,0 100%)}
+.fig__v{font-size:clamp(34px,4vw,58px);line-height:.95;letter-spacing:-.04em;font-weight:600;
+  font-variant-numeric:tabular-nums}
+.fig__u{font-size:clamp(15px,1.1vw,18px);font-weight:600;letter-spacing:-.012em;margin-top:6px}
+.fig__d{font-family:var(--m);font-size:10.5px;font-weight:500;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--on-l-mut);line-height:1.5;margin-top:8px}
+@media(max-width:900px){.figs__grid{grid-template-columns:repeat(2,1fr)}
+  .fig{transform:none}}
+@media(max-width:520px){.figs__grid{grid-template-columns:1fr}}
+
+/* ================= ДВИЖЕНИЕ ПО СКРОЛЛУ =================
+   Всё внутри @supports: где scroll-timeline не поддержан — просто статика.
+   Контент виден всегда, ни один элемент не ждёт скрипта, чтобы появиться. */
+@media (prefers-reduced-motion: no-preference){
+  @supports (animation-timeline: view()){
+
+    /* секции проявляются один раз при входе в кадр */
+    .sec > .wrap, .hero__in, .work__head, .deck, .deck__ui, .work__tx{
+      animation:rise both;
+      animation-timeline:view();
+      animation-range:entry 4% cover 26%}
+    @keyframes rise{
+      from{opacity:0;transform:translateY(18px)}
+      to  {opacity:1;transform:none}}
+
+    /* карточки цифр дрейфуют с разной скоростью — эффект глубины */
+    .fig{animation:drift-y linear both;animation-timeline:view();
+      animation-range:cover 0% cover 100%}
+    @keyframes drift-y{
+      from{transform:translateY(calc(var(--dy,0px) + 26px))}
+      to  {transform:translateY(calc(var(--dy,0px) - 26px))}}
+    .fig:nth-child(even){animation-name:drift-y-slow}
+    @keyframes drift-y-slow{
+      from{transform:translateY(calc(var(--dy,0px) + 12px))}
+      to  {transform:translateY(calc(var(--dy,0px) - 12px))}}
+
+    /* заголовок первого экрана слегка уходит вглубь при прокрутке */
+    .hero__h{animation:sink linear both;animation-timeline:view();
+      animation-range:exit 0% exit 100%}
+    @keyframes sink{to{opacity:.25;transform:translateY(-26px)}}
+  }
+}
 
 </style>
 
@@ -596,6 +886,48 @@ html.intro-done .intro{display:none}
   </div>
 </section>
 
+<!-- Цифры: плавающие карточки-артефакты -->
+<section class="sec sec--lt figs" id="cifry">
+  <div class="wrap">
+    <p class="lbl lbl--c">Коротко обо мне</p>
+    <h2 class="sec__h">Семнадцать лет чужих отделов продаж</h2>
+    <p class="sec__note">Ни одной цифры, которую нельзя проверить звонком
+      рекомендателю. Список рекомендателей даю на первом созвоне.</p>
+    <ul class="figs__grid">
+      <li class="fig" style="--dy:-18px;--k:1">
+        <b class="fig__v">17</b>
+        <span class="fig__u">лет 10 месяцев</span>
+        <span class="fig__d">в продажах и развитии бизнеса</span>
+      </li>
+      <li class="fig" style="--dy:26px;--k:2">
+        <b class="fig__v">20+</b>
+        <span class="fig__u">ниш</span>
+        <span class="fig__d">B2B и B2C — от автодилера до фитнеса</span>
+      </li>
+      <li class="fig" style="--dy:-6px;--k:3">
+        <b class="fig__v">6</b>
+        <span class="fig__u">стран</span>
+        <span class="fig__d">СНГ, где вёл проекты</span>
+      </li>
+      <li class="fig" style="--dy:34px;--k:4">
+        <b class="fig__v">~100</b>
+        <span class="fig__u">продавцов</span>
+        <span class="fig__d">под управлением одновременно</span>
+      </li>
+      <li class="fig" style="--dy:-22px;--k:5">
+        <b class="fig__v">2–35</b>
+        <span class="fig__u">человек</span>
+        <span class="fig__d">размер команд, которыми руководил</span>
+      </li>
+      <li class="fig" style="--dy:14px;--k:6">
+        <b class="fig__v">8</b>
+        <span class="fig__u">проектов</span>
+        <span class="fig__d">с цифрами, которые готов разобрать</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
 <!-- I — ИНТЕРЕС -->
 <section class="sec sec--lt" id="boli">
   <div class="wrap">
@@ -713,78 +1045,124 @@ html.intro-done .intro{display:none}
   </div>
 </section>
 
-<section class="sec sec--dk work" id="sites-work">
-  <div class="work__tint" id="workTint" aria-hidden="true"></div>
-  <div class="wrap">
-    <p class="lbl">Направление 02 · Работы</p>
-    <h2 class="sec__h">Сайты, которые я собрал<br><span class="mut">и демо, которые собрал под нишу</span></h2>
+<section class="work" id="sites-work">
+  <div class="work__bg" id="workBg" aria-hidden="true"></div>
 
-    <div class="rail" id="rail" tabindex="0" aria-label="Работы, прокручивается вбок">
-      <article class="slide" id="sl01" data-tint="#1B2430">
-        <div class="slide__shot"><img src="assets/img/work-01.jpg" alt="" loading="lazy" width="1600" height="900" onerror="this.parentNode.classList.add('is-empty');this.remove()"><span class="ph">[СКРИНШОТ → assets/img/work-01.jpg]</span></div>
-        <div class="slide__meta">
-          <p class="lbl"><span class="badge">ДЕМО</span> · Производство</p>
-          <h3 class="slide__h">Каталог с расчётом стоимости</h3>
-          <p class="slide__p">Демо-сборка: конфигуратор и передача заявки в CRM с меткой источника.</p>
-          <span class="slide__go">Смотреть демо <i>&rarr;</i> <span class="ph">[ССЫЛКА]</span></span>
-        </div>
-      </article>
-      <article class="slide" id="sl02" data-tint="#14211C">
-        <div class="slide__shot"><img src="assets/img/work-02.jpg" alt="" loading="lazy" width="1600" height="900" onerror="this.parentNode.classList.add('is-empty');this.remove()"><span class="ph">[СКРИНШОТ → assets/img/work-02.jpg]</span></div>
-        <div class="slide__meta">
-          <p class="lbl"><span class="badge badge--live">ДЕЙСТВУЮЩИЙ</span> · Доставка воды</p>
-          <h3 class="slide__h">B2B-сайт с amoCRM</h3>
-          <p class="slide__p">Сайт с интеграцией amoCRM и сквозной аналитикой. Прибыль клиента выросла на 32% за период.</p>
-          <span class="slide__go">Открыть сайт <i>&rarr;</i> <span class="ph">[ССЫЛКА]</span></span>
-        </div>
-      </article>
-      <article class="slide" id="sl03" data-tint="#241A1C">
-        <div class="slide__shot"><img src="assets/img/work-03.jpg" alt="" loading="lazy" width="1600" height="900" onerror="this.parentNode.classList.add('is-empty');this.remove()"><span class="ph">[СКРИНШОТ → assets/img/work-03.jpg]</span></div>
-        <div class="slide__meta">
-          <p class="lbl"><span class="badge">ДЕМО</span> · Услуги B2B</p>
-          <h3 class="slide__h">Лендинг под одну услугу</h3>
-          <p class="slide__p">Демо-сборка: одна услуга, один призыв, заявка в мессенджер без формы.</p>
-          <span class="slide__go">Смотреть демо <i>&rarr;</i> <span class="ph">[ССЫЛКА]</span></span>
-        </div>
-      </article>
-      <article class="slide" id="sl04" data-tint="#1E1C26">
-        <div class="slide__shot"><img src="assets/img/work-04.jpg" alt="" loading="lazy" width="1600" height="900" onerror="this.parentNode.classList.add('is-empty');this.remove()"><span class="ph">[СКРИНШОТ → assets/img/work-04.jpg]</span></div>
-        <div class="slide__meta">
-          <p class="lbl"><span class="badge">ДЕМО</span> · Розница</p>
-          <h3 class="slide__h">Витрина с бронированием</h3>
-          <p class="slide__p">Демо-сборка: наличие по складам и бронь без корзины.</p>
-          <span class="slide__go">Смотреть демо <i>&rarr;</i> <span class="ph">[ССЫЛКА]</span></span>
-        </div>
-      </article>
+  <div class="wrap work__head">
+    <div>
+      <p class="lbl">Направление 02 · Работы</p>
+      <h2 class="work__title">Сайты, которые я собрал</h2>
     </div>
+    <div class="seg" role="group" aria-label="Фильтр работ">
+      <input type="radio" name="wf" id="wf-all" value="all" checked>
+      <label for="wf-all">Все</label>
+      <input type="radio" name="wf" id="wf-live" value="live">
+      <label for="wf-live">Действующие</label>
+      <input type="radio" name="wf" id="wf-demo" value="demo">
+      <label for="wf-demo">Демо</label>
+      <span class="seg__glide" aria-hidden="true"></span>
+    </div>
+  </div>
 
-    <div class="rail__ui">
-      <div class="thumbs"><a class="thumb" href="#sl01" aria-label="Слайд 01"><span>01</span></a><a class="thumb" href="#sl02" aria-label="Слайд 02"><span>02</span></a><a class="thumb" href="#sl03" aria-label="Слайд 03"><span>03</span></a><a class="thumb" href="#sl04" aria-label="Слайд 04"><span>04</span></a></div>
-      <div class="rail__btns">
-        <button class="rbtn" id="railPrev" aria-label="Предыдущая работа">
+  <div class="deck" id="deck" tabindex="0" aria-roledescription="карусель" aria-label="Работы">
+    <article class="pane" data-tint="#16211D" data-ring="#2C4A3E" data-kind="live" aria-label="B2B-сайт с amoCRM">
+      <div class="pane__shot">
+        <img src="assets/img/work-01.jpg" alt="" loading="lazy" width="1600" height="900"
+             onerror="this.parentNode.classList.add('is-empty');this.remove()">
+        <span class="ph">[СКРИНШОТ → assets/img/work-01.jpg]</span>
+      </div>
+      <div class="pane__hud">
+        <p class="chips">
+          <span class="badge badge--live">Действующий</span>
+          <span class="chip">Доставка воды</span>
+        </p>
+        <h3 class="pane__h">B2B-сайт с amoCRM</h3>
+        <p class="pane__d">Заявки уходят в CRM с меткой источника, сквозная аналитика сведена с рекламой. Прибыль клиента выросла на 32% за период.</p>
+        <a class="pill-out" href="#kontakty">Открыть сайт
+          <span class="ph">[ССЫЛКА]</span></a>
+      </div>
+    </article>
+    <article class="pane" data-tint="#1A2130" data-ring="#2E3B55" data-kind="demo" aria-label="Каталог с расчётом">
+      <div class="pane__shot">
+        <img src="assets/img/work-02.jpg" alt="" loading="lazy" width="1600" height="900"
+             onerror="this.parentNode.classList.add('is-empty');this.remove()">
+        <span class="ph">[СКРИНШОТ → assets/img/work-02.jpg]</span>
+      </div>
+      <div class="pane__hud">
+        <p class="chips">
+          <span class="badge">Демо</span>
+          <span class="chip">Производство</span>
+        </p>
+        <h3 class="pane__h">Каталог с расчётом</h3>
+        <p class="pane__d">Демо-сборка: конфигуратор считает стоимость по параметрам и отправляет заявку с готовой спецификацией.</p>
+        <a class="pill-out" href="#kontakty">Смотреть демо
+          <span class="ph">[ССЫЛКА]</span></a>
+      </div>
+    </article>
+    <article class="pane" data-tint="#241A1C" data-ring="#4A2A2E" data-kind="demo" aria-label="Лендинг одной услуги">
+      <div class="pane__shot">
+        <img src="assets/img/work-03.jpg" alt="" loading="lazy" width="1600" height="900"
+             onerror="this.parentNode.classList.add('is-empty');this.remove()">
+        <span class="ph">[СКРИНШОТ → assets/img/work-03.jpg]</span>
+      </div>
+      <div class="pane__hud">
+        <p class="chips">
+          <span class="badge">Демо</span>
+          <span class="chip">Услуги B2B</span>
+        </p>
+        <h3 class="pane__h">Лендинг одной услуги</h3>
+        <p class="pane__d">Демо-сборка: одна услуга, один призыв, связь через мессенджер без формы и без сбора персональных данных.</p>
+        <a class="pill-out" href="#kontakty">Смотреть демо
+          <span class="ph">[ССЫЛКА]</span></a>
+      </div>
+    </article>
+    <article class="pane" data-tint="#1E1C26" data-ring="#393150" data-kind="demo" aria-label="Витрина с бронированием">
+      <div class="pane__shot">
+        <img src="assets/img/work-04.jpg" alt="" loading="lazy" width="1600" height="900"
+             onerror="this.parentNode.classList.add('is-empty');this.remove()">
+        <span class="ph">[СКРИНШОТ → assets/img/work-04.jpg]</span>
+      </div>
+      <div class="pane__hud">
+        <p class="chips">
+          <span class="badge">Демо</span>
+          <span class="chip">Розница</span>
+        </p>
+        <h3 class="pane__h">Витрина с бронированием</h3>
+        <p class="pane__d">Демо-сборка: наличие по складам, бронь без корзины и оплаты, передача брони менеджеру.</p>
+        <a class="pill-out" href="#kontakty">Смотреть демо
+          <span class="ph">[ССЫЛКА]</span></a>
+      </div>
+    </article>
+  </div>
+
+  <div class="deck__ui">
+    <div class="wrap deck__ui-in">
+      <div class="ths"><button class="th" data-go="0" aria-label="B2B-сайт с amoCRM"><span>01</span></button><button class="th" data-go="1" aria-label="Каталог с расчётом"><span>02</span></button><button class="th" data-go="2" aria-label="Лендинг одной услуги"><span>03</span></button><button class="th" data-go="3" aria-label="Витрина с бронированием"><span>04</span></button></div>
+      <div class="arrows">
+        <button class="arw" id="deckPrev" aria-label="Предыдущая работа">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 19l-7-7 7-7"/></svg></button>
-        <button class="rbtn" id="railNext" aria-label="Следующая работа">
+        <button class="arw" id="deckNext" aria-label="Следующая работа">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
       </div>
     </div>
+  </div>
 
-    <div class="work__tx">
-      <div>
-        <h3 class="work__h">Сайт — это первый этап воронки, а не витрина</h3>
-        <p>Витрина существует. Воронка приводит заявки и передаёт их дальше
-          с меткой источника, чтобы через месяц было видно, какой канал принёс
-          деньги, а какой только потратил бюджет. Разница в этом, а не в красоте.</p>
-        <p>Тексты пишу сам, по тем же цифрам, что вижу в вашей воронке. Это редкий
-          случай, когда разработчик и человек, который разбирал ваши звонки, —
-          одно лицо.</p>
-      </div>
-      <ul class="work__l">
-        <li><b>Скорость</b><span>Вёрстка без фреймворков и лишних библиотек. Скорость закладывается сразу, а не чинится после запуска.</span></li>
-        <li><b>Аналитика</b><span>UTM-метки, цели в Метрике, передача заявки в CRM. Источник каждой заявки известен.</span></li>
-        <li><b>Индексация</b><span>Семантическая разметка, микроданные, работоспособность без JavaScript. Яндекс видит текст, а не пустую страницу.</span></li>
-        <li><b>Комплаенс</b><span>152-ФЗ, согласие на обработку данных, политика. Проверяется до запуска, а не по жалобе.</span></li>
-      </ul>
+  <div class="wrap work__tx">
+    <div>
+      <h3 class="work__h">Сайт — это первый этап воронки, а не витрина</h3>
+      <p>Витрина существует. Воронка приводит заявки и передаёт их дальше
+        с меткой источника, чтобы через месяц было видно, какой канал принёс
+        деньги, а какой только потратил бюджет. Разница в этом, а не в красоте.</p>
+      <p>Тексты пишу сам, по тем же цифрам, что вижу в вашей воронке. Это редкий
+        случай, когда разработчик и человек, который разбирал ваши звонки, —
+        одно лицо.</p>
     </div>
+    <ul class="work__l">
+      <li><b>Скорость</b><span>Вёрстка без фреймворков и лишних библиотек. Скорость закладывается сразу, а не чинится после запуска.</span></li>
+      <li><b>Аналитика</b><span>UTM-метки, цели в Метрике, передача заявки в CRM. Источник каждой заявки известен.</span></li>
+      <li><b>Индексация</b><span>Семантическая разметка, микроданные, работоспособность без JavaScript. Яндекс видит текст, а не пустую страницу.</span></li>
+      <li><b>Комплаенс</b><span>152-ФЗ, согласие на обработку данных, политика. Проверяется до запуска, а не по жалобе.</span></li>
+    </ul>
   </div>
 </section>
 
@@ -933,15 +1311,47 @@ html.intro-done .intro{display:none}
 
 <section class="sec sec--dk final" id="kontakty">
   <div class="wrap">
+    <p class="lbl">Связь</p>
     <h2 class="sec__h">Начнём с разговора</h2>
     <p class="final__p">Двадцать минут голосом. Расскажете, что происходит
       с продажами, — скажу, вижу ли я тут работу и на какие деньги.
       Если не вижу, скажу и это.</p>
+
     <div class="acts">
-      <a class="btn" href="https://t.me/as_efimov07" rel="noopener">Telegram</a>
-      <a class="btn btn--g" href="https://wa.me/77051052216" rel="noopener">WhatsApp</a>
-      <a class="btn btn--g" href="tel:+77051052216">+7 705 105-22-16</a>
+      <!-- тактильная клавиша: корпус, свечение, индикатор -->
+      <a class="key" href="https://t.me/as_efimov07" rel="noopener" aria-label="Написать в Telegram">
+        <span class="key__glow" aria-hidden="true"></span>
+        <span class="key__cap">
+          <span class="key__face">
+            <svg viewBox="0 0 300 130" aria-hidden="true" class="key__mark">
+              <polygon points="10,8 112,8 90,30 10,30" fill="#E01F26"/>
+              <polygon points="10,54 215,54 193,76 10,76" fill="#E01F26"/>
+              <polygon points="10,100 112,100 90,122 10,122" fill="#E01F26"/>
+              <polygon points="132,8 290,8 290,30 110,30" fill="currentColor"/>
+              <rect x="110" y="30" width="22" height="70" fill="currentColor"/>
+              <rect x="110" y="100" width="180" height="22" fill="currentColor"/>
+              <rect x="268" y="54" width="22" height="68" fill="currentColor"/>
+              <polygon points="215,54 290,54 290,76 193,76" fill="currentColor"/>
+            </svg>
+            <span class="key__txt">Написать в Telegram</span>
+          </span>
+        </span>
+        <span class="key__led" aria-hidden="true"></span>
+      </a>
+
+      <!-- пламенная кнопка: свечение следует за курсором -->
+      <span class="flame">
+        <span class="flame__aura" aria-hidden="true"></span>
+        <a class="flame__btn" href="tel:+77051052216">
+          <span class="flame__spot" aria-hidden="true"></span>
+          <span class="flame__lbl">+7 705 105-22-16</span>
+          <svg class="flame__arw" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </span>
+
+      <a class="ghost" href="https://wa.me/77051052216" rel="noopener">WhatsApp <i>&rarr;</i></a>
     </div>
+
     <p class="lbl final__note">Форму не ставлю намеренно: персональные данные
       никуда не собираются и нигде не хранятся</p>
   </div>
@@ -1054,69 +1464,112 @@ html.intro-done .intro{display:none}
     });
   }
 
-  /* ---------- 4. Свечение под курсором на кнопках ---------- */
+  /* ---------- 4. Пламенная кнопка: свечение идёт за курсором ---------- */
   if (!matchMedia('(hover: none)').matches) {
-    document.querySelectorAll('.btn').forEach(function (b) {
-      b.addEventListener('pointermove', function (e) {
-        var r = b.getBoundingClientRect();
-        b.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-        b.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    document.querySelectorAll('.flame').forEach(function (wrap) {
+      var btn = wrap.querySelector('.flame__btn');
+      var spot = wrap.querySelector('.flame__spot');
+      if (!btn) return;
+      var target = 0, shown = 0, raf = null;
+
+      var tick = function () {
+        var d = target - shown;
+        if (Math.abs(d) < 0.004) { shown = target; raf = null; }
+        else { shown += d * 0.16; raf = requestAnimationFrame(tick); }
+        wrap.style.setProperty('--edge', shown.toFixed(3));
+      };
+      var kick = function () { if (!raf) raf = requestAnimationFrame(tick); };
+
+      wrap.addEventListener('pointermove', function (e) {
+        var r = btn.getBoundingClientRect();
+        var x = e.clientX - r.left;
+        var n = r.width ? x / r.width : 0.5;
+        /* чем ближе к краю, тем ярче ореол — как в исходном компоненте */
+        target = Math.pow(Math.min(1, Math.abs(n - 0.5) * 2), 1.6);
+        wrap.style.setProperty('--side', (n >= 0.5 ? 88 : 12) + '%');
+        if (spot) spot.style.setProperty('--mx', x + 'px');
+        kick();
       });
+      wrap.addEventListener('pointerleave', function () { target = 0; kick(); });
     });
   }
 
   /* ---------- 5. Карусель работ ---------- */
-  var rail = document.getElementById('rail');
-  if (rail) {
-    var slides = [].slice.call(rail.querySelectorAll('.slide'));
-    var thumbs = [].slice.call(document.querySelectorAll('.thumb'));
-    var tint = document.getElementById('workTint');
+  var deck = document.getElementById('deck');
+  if (deck) {
+    var all = [].slice.call(deck.querySelectorAll('.pane'));
+    var bg = document.getElementById('workBg');
+    var ths = [].slice.call(document.querySelectorAll('.th'));
+    var live = all;          // текущая выборка после фильтра
     var cur = 0;
 
-    var paint = function (i) {
-      cur = i;
-      thumbs.forEach(function (t, k) { t.classList.toggle('on', k === i); });
-      slides.forEach(function (s, k) {
-        s.classList.toggle('on', k === i);
-        s.classList.toggle('before', k < i);
-        s.classList.toggle('after', k > i);
+    var layout = function () {
+      all.forEach(function (p) { p.classList.toggle('hide', live.indexOf(p) === -1); });
+      live.forEach(function (p, k) {
+        var off = k - cur;
+        p.style.setProperty('--o', off);
+        var a = Math.abs(off);
+        p.dataset.off = a > 2 ? '' : String(off);
+        p.classList.toggle('far', a > 2);
+        p.setAttribute('aria-hidden', off === 0 ? 'false' : 'true');
       });
-      if (tint && slides[i]) tint.style.setProperty('--tint', slides[i].dataset.tint || '#1B2430');
+      ths.forEach(function (t) {
+        var p = all[Number(t.dataset.go)];
+        var k = live.indexOf(p);
+        t.hidden = k === -1;
+        t.classList.toggle('on', k === cur);
+      });
+      var act = live[cur];
+      if (bg && act) {
+        bg.style.setProperty('--tint', act.dataset.tint || '#16211D');
+        bg.style.setProperty('--ring', act.dataset.ring || '#2C4A3E');
+      }
+      var pv = document.getElementById('deckPrev');
+      var nx = document.getElementById('deckNext');
+      if (pv) pv.disabled = cur <= 0;
+      if (nx) nx.disabled = cur >= live.length - 1;
     };
     var go = function (i) {
-      i = Math.max(0, Math.min(slides.length - 1, i));
-      rail.scrollTo({ left: slides[i].offsetLeft - rail.offsetLeft, behavior: 'smooth' });
-      paint(i);
+      cur = Math.max(0, Math.min(live.length - 1, i));
+      layout();
     };
 
-    /* какой слайд в центре — по позиции скролла */
-    var idle;
-    rail.addEventListener('scroll', function () {
-      clearTimeout(idle);
-      idle = setTimeout(function () {
-        var mid = rail.scrollLeft + rail.clientWidth / 2;
-        var near = 0, best = Infinity;
-        slides.forEach(function (s, k) {
-          var c = s.offsetLeft - rail.offsetLeft + s.clientWidth / 2;
-          var d = Math.abs(c - mid);
-          if (d < best) { best = d; near = k; }
-        });
-        if (near !== cur) paint(near);
-      }, 90);
-    }, { passive: true });
-
-    var prev = document.getElementById('railPrev');
-    var next = document.getElementById('railNext');
-    if (prev) prev.addEventListener('click', function () { go(cur - 1); });
-    if (next) next.addEventListener('click', function () { go(cur + 1); });
-    thumbs.forEach(function (t, k) {
-      t.addEventListener('click', function (e) { e.preventDefault(); go(k); });
+    var pv = document.getElementById('deckPrev');
+    var nx = document.getElementById('deckNext');
+    if (pv) pv.addEventListener('click', function () { go(cur - 1); });
+    if (nx) nx.addEventListener('click', function () { go(cur + 1); });
+    ths.forEach(function (t) {
+      t.addEventListener('click', function () {
+        var k = live.indexOf(all[Number(t.dataset.go)]);
+        if (k > -1) go(k);
+      });
     });
-    rail.addEventListener('keydown', function (e) {
+    deck.addEventListener('keydown', function (e) {
       if (e.key === 'ArrowRight') { e.preventDefault(); go(cur + 1); }
       if (e.key === 'ArrowLeft')  { e.preventDefault(); go(cur - 1); }
     });
-    paint(0);
+
+    /* свайп пальцем */
+    var x0 = null;
+    deck.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+    deck.addEventListener('touchend', function (e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 45) go(cur + (dx < 0 ? 1 : -1));
+      x0 = null;
+    }, { passive: true });
+
+    /* фильтр «Все / Действующие / Демо» */
+    [].slice.call(document.querySelectorAll('.seg input')).forEach(function (r) {
+      r.addEventListener('change', function () {
+        var v = r.value;
+        live = v === 'all' ? all : all.filter(function (p) { return p.dataset.kind === v; });
+        cur = 0;
+        layout();
+      });
+    });
+
+    layout();
   }
 })();
 

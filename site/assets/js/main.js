@@ -79,68 +79,111 @@
     });
   }
 
-  /* ---------- 4. Свечение под курсором на кнопках ---------- */
+  /* ---------- 4. Пламенная кнопка: свечение идёт за курсором ---------- */
   if (!matchMedia('(hover: none)').matches) {
-    document.querySelectorAll('.btn').forEach(function (b) {
-      b.addEventListener('pointermove', function (e) {
-        var r = b.getBoundingClientRect();
-        b.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-        b.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    document.querySelectorAll('.flame').forEach(function (wrap) {
+      var btn = wrap.querySelector('.flame__btn');
+      var spot = wrap.querySelector('.flame__spot');
+      if (!btn) return;
+      var target = 0, shown = 0, raf = null;
+
+      var tick = function () {
+        var d = target - shown;
+        if (Math.abs(d) < 0.004) { shown = target; raf = null; }
+        else { shown += d * 0.16; raf = requestAnimationFrame(tick); }
+        wrap.style.setProperty('--edge', shown.toFixed(3));
+      };
+      var kick = function () { if (!raf) raf = requestAnimationFrame(tick); };
+
+      wrap.addEventListener('pointermove', function (e) {
+        var r = btn.getBoundingClientRect();
+        var x = e.clientX - r.left;
+        var n = r.width ? x / r.width : 0.5;
+        /* чем ближе к краю, тем ярче ореол — как в исходном компоненте */
+        target = Math.pow(Math.min(1, Math.abs(n - 0.5) * 2), 1.6);
+        wrap.style.setProperty('--side', (n >= 0.5 ? 88 : 12) + '%');
+        if (spot) spot.style.setProperty('--mx', x + 'px');
+        kick();
       });
+      wrap.addEventListener('pointerleave', function () { target = 0; kick(); });
     });
   }
 
   /* ---------- 5. Карусель работ ---------- */
-  var rail = document.getElementById('rail');
-  if (rail) {
-    var slides = [].slice.call(rail.querySelectorAll('.slide'));
-    var thumbs = [].slice.call(document.querySelectorAll('.thumb'));
-    var tint = document.getElementById('workTint');
+  var deck = document.getElementById('deck');
+  if (deck) {
+    var all = [].slice.call(deck.querySelectorAll('.pane'));
+    var bg = document.getElementById('workBg');
+    var ths = [].slice.call(document.querySelectorAll('.th'));
+    var live = all;          // текущая выборка после фильтра
     var cur = 0;
 
-    var paint = function (i) {
-      cur = i;
-      thumbs.forEach(function (t, k) { t.classList.toggle('on', k === i); });
-      slides.forEach(function (s, k) {
-        s.classList.toggle('on', k === i);
-        s.classList.toggle('before', k < i);
-        s.classList.toggle('after', k > i);
+    var layout = function () {
+      all.forEach(function (p) { p.classList.toggle('hide', live.indexOf(p) === -1); });
+      live.forEach(function (p, k) {
+        var off = k - cur;
+        p.style.setProperty('--o', off);
+        var a = Math.abs(off);
+        p.dataset.off = a > 2 ? '' : String(off);
+        p.classList.toggle('far', a > 2);
+        p.setAttribute('aria-hidden', off === 0 ? 'false' : 'true');
       });
-      if (tint && slides[i]) tint.style.setProperty('--tint', slides[i].dataset.tint || '#1B2430');
+      ths.forEach(function (t) {
+        var p = all[Number(t.dataset.go)];
+        var k = live.indexOf(p);
+        t.hidden = k === -1;
+        t.classList.toggle('on', k === cur);
+      });
+      var act = live[cur];
+      if (bg && act) {
+        bg.style.setProperty('--tint', act.dataset.tint || '#16211D');
+        bg.style.setProperty('--ring', act.dataset.ring || '#2C4A3E');
+      }
+      var pv = document.getElementById('deckPrev');
+      var nx = document.getElementById('deckNext');
+      if (pv) pv.disabled = cur <= 0;
+      if (nx) nx.disabled = cur >= live.length - 1;
     };
     var go = function (i) {
-      i = Math.max(0, Math.min(slides.length - 1, i));
-      rail.scrollTo({ left: slides[i].offsetLeft - rail.offsetLeft, behavior: 'smooth' });
-      paint(i);
+      cur = Math.max(0, Math.min(live.length - 1, i));
+      layout();
     };
 
-    /* какой слайд в центре — по позиции скролла */
-    var idle;
-    rail.addEventListener('scroll', function () {
-      clearTimeout(idle);
-      idle = setTimeout(function () {
-        var mid = rail.scrollLeft + rail.clientWidth / 2;
-        var near = 0, best = Infinity;
-        slides.forEach(function (s, k) {
-          var c = s.offsetLeft - rail.offsetLeft + s.clientWidth / 2;
-          var d = Math.abs(c - mid);
-          if (d < best) { best = d; near = k; }
-        });
-        if (near !== cur) paint(near);
-      }, 90);
-    }, { passive: true });
-
-    var prev = document.getElementById('railPrev');
-    var next = document.getElementById('railNext');
-    if (prev) prev.addEventListener('click', function () { go(cur - 1); });
-    if (next) next.addEventListener('click', function () { go(cur + 1); });
-    thumbs.forEach(function (t, k) {
-      t.addEventListener('click', function (e) { e.preventDefault(); go(k); });
+    var pv = document.getElementById('deckPrev');
+    var nx = document.getElementById('deckNext');
+    if (pv) pv.addEventListener('click', function () { go(cur - 1); });
+    if (nx) nx.addEventListener('click', function () { go(cur + 1); });
+    ths.forEach(function (t) {
+      t.addEventListener('click', function () {
+        var k = live.indexOf(all[Number(t.dataset.go)]);
+        if (k > -1) go(k);
+      });
     });
-    rail.addEventListener('keydown', function (e) {
+    deck.addEventListener('keydown', function (e) {
       if (e.key === 'ArrowRight') { e.preventDefault(); go(cur + 1); }
       if (e.key === 'ArrowLeft')  { e.preventDefault(); go(cur - 1); }
     });
-    paint(0);
+
+    /* свайп пальцем */
+    var x0 = null;
+    deck.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+    deck.addEventListener('touchend', function (e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 45) go(cur + (dx < 0 ? 1 : -1));
+      x0 = null;
+    }, { passive: true });
+
+    /* фильтр «Все / Действующие / Демо» */
+    [].slice.call(document.querySelectorAll('.seg input')).forEach(function (r) {
+      r.addEventListener('change', function () {
+        var v = r.value;
+        live = v === 'all' ? all : all.filter(function (p) { return p.dataset.kind === v; });
+        cur = 0;
+        layout();
+      });
+    });
+
+    layout();
   }
 })();
