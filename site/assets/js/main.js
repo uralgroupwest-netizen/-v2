@@ -101,6 +101,11 @@
     var paint = function (i) {
       cur = i;
       thumbs.forEach(function (t, k) { t.classList.toggle('on', k === i); });
+      slides.forEach(function (s, k) {
+        s.classList.toggle('on', k === i);
+        s.classList.toggle('before', k < i);
+        s.classList.toggle('after', k > i);
+      });
       if (tint && slides[i]) tint.style.setProperty('--tint', slides[i].dataset.tint || '#1B2430');
     };
     var go = function (i) {
