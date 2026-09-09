@@ -16,7 +16,7 @@
 
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/onest-cyrillic-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/style.css?v=1">
+<link rel="stylesheet" href="assets/css/style.css?v=2">
 
 <script>
 /* Ставим флаг до первой отрисовки: без JS заставки не будет вовсе. */
@@ -68,13 +68,14 @@
   </div>
   <p class="intro__words">CRM · Сайты · Отделы продаж</p>
   <p class="intro__counter"><span id="introNum">0</span></p>
+  <p class="intro__skip">Клик — пропустить</p>
 </div>
 
 <a class="skip" href="#main">К содержанию</a>
 
 <header class="hdr">
-  <a class="hdr__logo" href="/" aria-label="Efimov Group — на главную">
-    <svg viewBox="0 0 300 130" aria-hidden="true">
+  <a class="brand" href="/" aria-label="Efimov Group — на главную">
+    <svg class="brand__mark" viewBox="0 0 300 130" aria-hidden="true">
       <polygon points="10,8 112,8 90,30 10,30" fill="#E01F26"/>
       <polygon points="10,54 215,54 193,76 10,76" fill="#E01F26"/>
       <polygon points="10,100 112,100 90,122 10,122" fill="#E01F26"/>
@@ -84,14 +85,34 @@
       <rect x="268" y="54" width="22" height="68" fill="currentColor"/>
       <polygon points="215,54 290,54 290,76 193,76" fill="currentColor"/>
     </svg>
+    <span class="brand__txt">
+      <span class="brand__name">Efimov Group</span>
+      <span class="brand__desc">CRM · Сайты · Отделы продаж</span>
+    </span>
   </a>
-  <nav class="hdr__nav">
+
+  <nav class="hdr__nav" aria-label="Основная навигация">
     <a href="#napravleniya">Направления</a>
     <a href="#rezultaty">Результаты</a>
     <a href="#process">Как работаю</a>
+    <a href="#faq">FAQ</a>
+    <a href="#kontakty">Контакты</a>
   </nav>
+
   <a class="pill" href="https://t.me/as_efimov07" rel="noopener">Написать</a>
+  <button class="burger" id="burger" aria-label="Меню" aria-expanded="false" aria-controls="mnav">
+    <span></span><span></span>
+  </button>
 </header>
+
+<nav class="mnav" id="mnav" hidden aria-label="Мобильная навигация">
+  <a href="#napravleniya">Направления</a>
+  <a href="#rezultaty">Результаты</a>
+  <a href="#process">Как работаю</a>
+  <a href="#faq">FAQ</a>
+  <a href="#kontakty">Контакты</a>
+  <a href="https://t.me/as_efimov07" rel="noopener">Написать в Telegram</a>
+</nav>
 
 <main id="main">
 
@@ -126,7 +147,7 @@
           разбор звонков, регламенты, дисциплина в CRM. Отказ в любой момент.</p>
         <span class="card__go">Что входит <i>&rarr;</i></span>
       </a>
-      <a class="card" href="#sites">
+      <a class="card" href="#sites-work">
         <span class="card__n">03</span>
         <h2 class="card__h">Сайты<br>и приложения</h2>
         <p class="card__p">Сайт, который приводит заявки и передаёт их в CRM
@@ -258,6 +279,106 @@
   </div>
 </section>
 
+<section class="sec sec--dk work" id="sites-work">
+  <div class="work__tint" id="workTint" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="lbl">Направление 02 · Работы</p>
+    <h2 class="sec__h">Сайты, которые я собрал<br><span class="mut">и демо, которые собрал под нишу</span></h2>
+
+    <div class="rail" id="rail" tabindex="0" aria-label="Работы, прокручивается вбок">
+      <article class="slide" id="sl01" data-tint="#1B2430">
+        <div class="slide__shot"><span class="ph">[СКРИНШОТ 01]</span></div>
+        <div class="slide__meta">
+          <p class="lbl"><span class="badge">ДЕМО</span> · Производство</p>
+          <h3 class="slide__h">Каталог с расчётом стоимости</h3>
+          <p class="slide__p">Демо-сборка: конфигуратор и передача заявки в CRM с меткой источника.</p>
+          <span class="slide__go">Смотреть демо <i>&rarr;</i> <span class="ph">[ССЫЛКА]</span></span>
+        </div>
+      </article>
+      <article class="slide" id="sl02" data-tint="#14211C">
+        <div class="slide__shot"><span class="ph">[СКРИНШОТ 02]</span></div>
+        <div class="slide__meta">
+          <p class="lbl"><span class="badge badge--live">ДЕЙСТВУЮЩИЙ</span> · Доставка воды</p>
+          <h3 class="slide__h">B2B-сайт с amoCRM</h3>
+          <p class="slide__p">Сайт с интеграцией amoCRM и сквозной аналитикой. Прибыль клиента выросла на 32% за период.</p>
+          <span class="slide__go">Открыть сайт <i>&rarr;</i> <span class="ph">[ССЫЛКА]</span></span>
+        </div>
+      </article>
+      <article class="slide" id="sl03" data-tint="#241A1C">
+        <div class="slide__shot"><span class="ph">[СКРИНШОТ 03]</span></div>
+        <div class="slide__meta">
+          <p class="lbl"><span class="badge">ДЕМО</span> · Услуги B2B</p>
+          <h3 class="slide__h">Лендинг под одну услугу</h3>
+          <p class="slide__p">Демо-сборка: одна услуга, один призыв, заявка в мессенджер без формы.</p>
+          <span class="slide__go">Смотреть демо <i>&rarr;</i> <span class="ph">[ССЫЛКА]</span></span>
+        </div>
+      </article>
+      <article class="slide" id="sl04" data-tint="#1E1C26">
+        <div class="slide__shot"><span class="ph">[СКРИНШОТ 04]</span></div>
+        <div class="slide__meta">
+          <p class="lbl"><span class="badge">ДЕМО</span> · Розница</p>
+          <h3 class="slide__h">Витрина с бронированием</h3>
+          <p class="slide__p">Демо-сборка: наличие по складам и бронь без корзины.</p>
+          <span class="slide__go">Смотреть демо <i>&rarr;</i> <span class="ph">[ССЫЛКА]</span></span>
+        </div>
+      </article>
+    </div>
+
+    <div class="rail__ui">
+      <div class="thumbs"><a class="thumb" href="#sl01" aria-label="Слайд 01"><span>01</span></a><a class="thumb" href="#sl02" aria-label="Слайд 02"><span>02</span></a><a class="thumb" href="#sl03" aria-label="Слайд 03"><span>03</span></a><a class="thumb" href="#sl04" aria-label="Слайд 04"><span>04</span></a></div>
+      <div class="rail__btns">
+        <button class="rbtn" id="railPrev" aria-label="Предыдущая работа">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 19l-7-7 7-7"/></svg></button>
+        <button class="rbtn" id="railNext" aria-label="Следующая работа">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+    </div>
+
+    <div class="work__tx">
+      <div>
+        <h3 class="work__h">Сайт — это первый этап воронки, а не витрина</h3>
+        <p>Витрина существует. Воронка приводит заявки и передаёт их дальше
+          с меткой источника, чтобы через месяц было видно, какой канал принёс
+          деньги, а какой только потратил бюджет. Разница в этом, а не в красоте.</p>
+        <p>Тексты пишу сам, по тем же цифрам, что вижу в вашей воронке. Это редкий
+          случай, когда разработчик и человек, который разбирал ваши звонки, —
+          одно лицо.</p>
+      </div>
+      <ul class="work__l">
+        <li><b>Скорость</b><span>Вёрстка без фреймворков и лишних библиотек. Скорость закладывается сразу, а не чинится после запуска.</span></li>
+        <li><b>Аналитика</b><span>UTM-метки, цели в Метрике, передача заявки в CRM. Источник каждой заявки известен.</span></li>
+        <li><b>Индексация</b><span>Семантическая разметка, микроданные, работоспособность без JavaScript. Яндекс видит текст, а не пустую страницу.</span></li>
+        <li><b>Комплаенс</b><span>152-ФЗ, согласие на обработку данных, политика. Проверяется до запуска, а не по жалобе.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--lt" id="imya">
+  <div class="wrap name">
+    <figure class="name__ph">
+      <div class="name__img" role="img" aria-label="Фотография Антона Ефимова">
+        <span class="ph">[ФОТО]</span>
+      </div>
+      <figcaption class="lbl">Ефимов Антон Сергеевич · основатель</figcaption>
+    </figure>
+    <div class="name__tx">
+      <p class="lbl">Отвечаем именем</p>
+      <h2 class="sec__h name__h">Слоган не фигура речи.<br><span class="mut">Фамилия на вывеске — моя.</span></h2>
+      <p>Семнадцать лет я строил продажи в чужих компаниях. Дилер ГАЗ и УАЗ, где
+        сто человек и план каждый месяц. Инжиниринг, где сделка идёт полгода.
+        Фитнес, где решение принимают за минуту. Аутсорсинг РОПов, где под
+        управлением была сотня продавцов сразу.</p>
+      <p>За это время я усвоил одну вещь: подрядчика, который отвечает деньгами
+        и именем, от подрядчика, который отвечает отчётом, отличают по первому
+        разговору. Поэтому первый разговор всегда веду сам.</p>
+      <p class="name__sig">Поэтому на первом созвоне я отвечаю не «сделаем», а либо
+        «вижу здесь работу», либо «не вижу, вам это сейчас не нужно». Второй ответ
+        слышать неприятнее, но он честнее счёта за работу, которая ничего не изменит.</p>
+    </div>
+  </div>
+</section>
+
 <!-- A — ДЕЙСТВИЕ -->
 <section class="sec sec--lt" id="audit">
   <div class="wrap">
@@ -323,7 +444,57 @@
   </div>
 </section>
 
-<section class="sec sec--dk final">
+<section class="sec sec--dk" id="faq">
+  <div class="wrap">
+    <p class="lbl">Вопросы</p>
+    <h2 class="sec__h">Что обычно спрашивают<br><span class="mut">до того, как согласиться</span></h2>
+    <div class="faq">
+      <details class="q"><summary>Сколько стоит аудит?<i></i></summary>
+        <p><span class="ph">[ЦЕНА]</span> фиксированно, независимо от размера отдела.
+        Цена не плавает по ходу работы: объём зафиксирован — пять дней, четыре этапа
+        воронки, разбор звонков, CRM, маржинальность по каналам.</p></details>
+
+      <details class="q"><summary>А если после аудита я решу ничего не делать?<i></i></summary>
+        <p>Забираете план и делаете сами или чужими руками. Продолжение не входит
+        в условия и не навязывается. Аудит — законченный продукт, а не воронка,
+        чтобы продать вам что-то дороже.</p></details>
+
+      <details class="q"><summary>Вы работаете один. А если заболеете?<i></i></summary>
+        <p>Отвечу честно: это реальный риск, и он есть. Поэтому я беру ограниченное
+        число проектов и не обещаю круглосуточную доступность. Взамен вы говорите
+        с тем, кто сам смотрел вашу воронку, а не с аккаунт-менеджером, который
+        пересказывает вопрос дальше.</p></details>
+
+      <details class="q"><summary>Почему не нанять РОПа в штат?<i></i></summary>
+        <p>Часто — надо. Если у вас двадцать продавцов и стабильный поток, штатный
+        руководитель дешевле. Аутсорс выигрывает в трёх случаях: отдел меньше
+        десяти человек, нужен результат быстрее, чем за два месяца поиска, или вы
+        не готовы платить 150–200 тысяч в месяц с налогами, не зная, окупится ли.</p></details>
+
+      <details class="q"><summary>Даёте гарантию на результат?<i></i></summary>
+        <p>Гарантирую объём и сроки работы, а не цифру выручки. Любой, кто обещает
+        конкретный процент роста до того, как увидел вашу воронку, — либо не считал,
+        либо не собирается отвечать за слова.</p></details>
+
+      <details class="q"><summary>Работаете по договору?<i></i></summary>
+        <p>Да. Самозанятый в РФ, чек формируется в «Моём налоге», закрывающие
+        документы для бухгалтерии есть. Для юрлица это обычный договор оказания
+        услуг с физлицом на НПД — налоговых последствий у вас не возникает.</p></details>
+
+      <details class="q"><summary>У меня специфическая ниша, вы разберётесь?<i></i></summary>
+        <p>Двадцать с лишним ниш за семнадцать лет, от автодилеров до фитнеса
+        и доставки воды. Специфика влияет на аргументы в разговоре с клиентом,
+        но не на то, где именно теряются заявки: этапы одни и те же везде.</p></details>
+
+      <details class="q"><summary>Сколько времени потребуется от меня?<i></i></summary>
+        <p>Четыре–шесть часов за пять дней: доступ к CRM и записям звонков, один
+        разговор на старте, один час разбора в конце. Отрывать команду от работы
+        не нужно.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--dk final" id="kontakty">
   <div class="wrap">
     <h2 class="sec__h">Начнём с разговора</h2>
     <p class="final__p">Двадцать минут голосом. Расскажете, что происходит
@@ -360,6 +531,10 @@
   </div>
 </footer>
 
-<script src="assets/js/main.js?v=1" defer></script>
+<button class="totop" id="totop" aria-label="Наверх" hidden>
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script src="assets/js/main.js?v=2" defer></script>
 </body>
 </html>
