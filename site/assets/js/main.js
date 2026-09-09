@@ -164,6 +164,29 @@
       if (e.key === 'ArrowLeft')  { e.preventDefault(); go(cur - 1); }
     });
 
+    /* прокрутка курсором: движение вправо листает вперёд, влево — назад */
+    if (matchMedia('(pointer: fine)').matches) {
+      var lastX = null, acc = 0, cool = 0;
+      var STEP = 110;      // сколько пикселей проехать, чтобы сменить работу
+      var COOL = 460;      // пауза между переключениями, синхронно с переходом
+      deck.addEventListener('pointermove', function (e) {
+        if (lastX === null) { lastX = e.clientX; return; }
+        var dx = e.clientX - lastX;
+        lastX = e.clientX;
+        if (dx * acc < 0) acc = 0;          // сменил направление — считаем заново
+        acc += dx;
+        var now = performance.now();
+        if (now < cool || Math.abs(acc) < STEP) return;
+        var dir = acc > 0 ? 1 : -1;
+        acc = 0;
+        cool = now + COOL;
+        if (dir > 0 && cur >= live.length - 1) return;
+        if (dir < 0 && cur <= 0) return;
+        go(cur + dir);
+      });
+      deck.addEventListener('pointerleave', function () { lastX = null; acc = 0; });
+    }
+
     /* свайп пальцем */
     var x0 = null;
     deck.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
