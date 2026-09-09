@@ -39,7 +39,8 @@ a{color:inherit;text-decoration:none}
 .sec--lt .lbl{color:var(--on-l-mut)}
 .mut{color:var(--on-d-mut)}
 .sec--lt .mut{color:var(--on-l-mut)}
-.ph{display:inline-block;font-family:var(--m);font-size:.85em;color:var(--on-d-mut);letter-spacing:.04em;
+.ph{display:inline-block;font-family:var(--m);font-size:.85em;color:var(--on-d-mut);
+  text-transform:uppercase;letter-spacing:.08em;
   outline:1px dashed currentColor;outline-offset:3px}
 
 .wrap{max-width:1240px;margin:0 auto;padding:0 var(--pad)}
@@ -390,8 +391,8 @@ html.intro-done .intro{display:none}
 .work__bg{position:absolute;inset:0;z-index:0;pointer-events:none;
   background:
     repeating-radial-gradient(circle at 14% 46%,
-      transparent 0 46px, var(--ring,#2C4A3E) 46px 48px),
-    var(--tint,#16211D);
+      transparent 0 46px, var(--ring,#2C2E33) 46px 48px),
+    var(--tint,#17181B);
   opacity:.9;transition:background 1.05s cubic-bezier(.4,0,.2,1)}
 .work__bg::after{content:"";position:absolute;inset:0;
   background:linear-gradient(180deg,rgba(17,18,20,.55) 0%,rgba(17,18,20,.15) 35%,rgba(17,18,20,.9) 100%)}
@@ -565,7 +566,7 @@ html.intro-done .intro{display:none}
 /* индикатор гаснет в покое и загорается под курсором */
 .key__led{position:absolute;right:14px;top:50%;transform:translateY(-50%);width:8px;height:8px;
   clip-path:polygon(0 0,100% 0,100% calc(100% - 3px),calc(100% - 3px) 100%,0 100%);
-  background:#3a1113;transition:.35s}
+  background:#2b2e34;transition:.35s}
 .key:hover .key__led{background:#ff4b52;box-shadow:0 0 14px 4px rgba(224,31,38,.75)}
 
 /* ================= ПЛАМЕННАЯ КНОПКА ================= */
