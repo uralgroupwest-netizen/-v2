@@ -81,7 +81,15 @@ a{color:inherit;text-decoration:none}
 .mnav a:last-child{color:var(--on-d)}
 @media(max-width:1020px){.hdr__nav,.pill{display:none}.burger{display:flex}}
 @media(min-width:1021px){.mnav{display:none!important}}
-@media(max-width:560px){.brand__txt{display:none}.brand__mark{width:88px}}
+/* марка и дескриптор остаются и на телефоне: их прятали, а по ТЗ они обязательны */
+@media(max-width:560px){
+  .brand{gap:10px}
+  .brand__mark{width:54px}
+  .brand__txt{padding-left:10px;gap:2px}
+  .brand__name{font-size:13px}
+  .brand__desc{font-size:7.6px;letter-spacing:.07em;white-space:nowrap}
+  .hdr{gap:10px;padding-left:16px;padding-right:16px}
+}
 
 /* ---------- первый экран ---------- */
 .hero{padding:clamp(48px,7vw,92px) 0 clamp(40px,6vw,72px);
