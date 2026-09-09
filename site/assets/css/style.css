@@ -422,3 +422,12 @@ html.intro-done .intro{display:none}
   .slide{flex:0 0 88%}
   .slide.before,.slide.after{transform:none}
 }
+
+/* портрет: монохром в покое, цвет при наведении — убирает чужой фон студии */
+.name__img img{filter:grayscale(1) contrast(1.06) brightness(1.02);
+  transition:filter .5s cubic-bezier(.4,0,.2,1)}
+.name__ph:hover .name__img img{filter:grayscale(0) contrast(1) brightness(1)}
+/* правый край фона гасим в цвет секции — там остаточная графика студии */
+.name__img::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(90deg,transparent 62%,rgba(242,241,238,.55) 100%)}
+@media (prefers-reduced-motion:reduce){.name__img img{transition:none}}
