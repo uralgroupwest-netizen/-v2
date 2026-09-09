@@ -63,8 +63,16 @@
   if (totop) {
     totop.hidden = false;
     var ticking = false;
+    var prevY = scrollY;
     var sync = function () {
-      totop.classList.toggle('on', scrollY > 700);
+      var y = scrollY;
+      /* показываем при прокрутке вверх — тогда она и нужна, и меньше времени лежит на тексте */
+      var up = y < prevY - 4;
+      var down = y > prevY + 4;
+      if (down) totop.classList.remove('on');
+      else if (up && y > 700) totop.classList.add('on');
+      if (y <= 700) totop.classList.remove('on');
+      if (up || down) prevY = y;
       ticking = false;
     };
     addEventListener('scroll', function () {
